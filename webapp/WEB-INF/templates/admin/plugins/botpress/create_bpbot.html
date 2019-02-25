@@ -1,0 +1,43 @@
+<@box>
+	<@boxHeader title='#i18n{botpress.create_bpbot.title}' />
+	<@boxBody>
+    <@tform name='create_bpbot' action='jsp/admin/plugins/botpress/ManageBPBots.jsp'>
+
+        <@messages errors=errors />
+        <input type="hidden" id="id" name="id"/>
+        
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelBotKey}' helpKey='#i18n{botpress.create_bpbot.labelBotKey.help}' mandatory=true>
+					<@input type='text' name='bot_key' value='${bpbot.botKey!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelName}' helpKey='#i18n{botpress.create_bpbot.labelName.help}' mandatory=true>
+					<@input type='text' name='name' value='${bpbot.name!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelDescription}' helpKey='#i18n{botpress.create_bpbot.labelDescription.help}' mandatory=true>
+					<@input type='text' name='description' value='${bpbot.description!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelServerUrl}' helpKey='#i18n{botpress.create_bpbot.labelServerUrl.help}' mandatory=true>
+					<@input type='text' name='server_url' value='${bpbot.serverUrl!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelApiVersion}' helpKey='#i18n{botpress.create_bpbot.labelApiVersion.help}' >
+					<@select name='api_version' items=versions_list default_value='${bpbot.apiVersion!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelAvatarUrl}' helpKey='#i18n{botpress.create_bpbot.labelAvatarUrl.help}' mandatory=true>
+					<@input type='text' name='avatar_url' value='${bpbot.avatarUrl!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelLanguage}' helpKey='#i18n{botpress.create_bpbot.labelLanguage.help}' mandatory=true>
+					 <@select name='language' items=languages_list default_value='${bpbot.language!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelBotStatus}' helpKey='#i18n{botpress.create_bpbot.labelBotStatus.help}' mandatory=true>
+					<@select name='bot_status' items=status_list default_value='${bpbot.botStatus}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelIsStandalone}' helpKey='#i18n{botpress.create_bpbot.labelIsStandalone.help}' mandatory=true>
+					<@select name='standalone' items=modes_list default_value='${bpbot.isStandalone}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelWelcomeMessage}' helpKey='#i18n{botpress.create_bpbot.labelWelcomeMessage.help}' >
+					<@input type='text' name='welcome_message' value='${bpbot.welcomeMessage!\'\'}' />
+				</@formGroup>
+				
+				<@actionButtons button1Name="action_createBPBot" button2Name="view_manageBPBot"/>
+    </@tform>
+	</@boxBody>
+</@box>

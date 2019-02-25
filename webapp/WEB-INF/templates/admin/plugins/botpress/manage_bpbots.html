@@ -1,0 +1,74 @@
+<@box>
+	<@boxHeader title='#i18n{botpress.manage_bpbot.title}' boxTools=true>
+		<@tform class='form-inline pull-right' name='manage_bpbot' action='jsp/admin/plugins/botpress/ManageBPBots.jsp'>
+			<@button type='submit' name='view_createBPBot' buttonIcon='plus' title='#i18n{botpress.manage_bpbots.buttonAdd}' />
+		</@tform>
+	</@boxHeader>
+	<@boxBody>    
+    <@messages infos=infos />
+    <@paginationAdmin paginator=paginator combo=1 />
+    <div class="clearfix"></div>
+    <@table>
+        <tr>
+            <input type="hidden" id="id" name="id"/>
+            <th>&nbsp;</th>
+            <th>#i18n{botpress.manage_bpbots.columnBotKey}</th>
+            <th>#i18n{botpress.manage_bpbots.columnName} / #i18n{botpress.manage_bpbots.columnDescription}</th>
+            <th>#i18n{botpress.manage_bpbots.columnServerUrl}</th>
+            <th>#i18n{botpress.manage_bpbots.columnApiVersion}</th>
+            <th>#i18n{botpress.manage_bpbots.columnLanguage}</th>
+            <th>#i18n{botpress.manage_bpbots.columnBotStatus}</th>
+            <th>#i18n{botpress.manage_bpbots.columnIsStandalone}</th>
+            <th>#i18n{botpress.manage_bpbots.columnWelcomeMessage}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+        <@tableHeadBodySeparator />
+            <#list bpbot_list as bpbot >
+        <tr>
+            <input type="hidden" id="id" name="id"/>
+            <td>
+                <img src="${bpbot.avatarUrl}" alt="avatar" width="48"/>
+            </td>
+            <td>
+                <strong>${bpbot.botKey}</strong>
+            </td>
+            <td>
+                <strong>${bpbot.name}</strong><br>
+                <em>${bpbot.description}</em>
+            </td>
+            <td>
+                ${bpbot.serverUrl}
+            </td>
+            <td>
+                v${bpbot.apiVersion}
+            </td>
+            <td>
+                ${bpbot.language}
+            </td>
+            <td>
+                <#if bpbot.botStatus = 0>
+                    <span class="label label-danger">#i18n{portal.util.labelDisabled}</span>
+                <#else>
+                    <span class="label label-success">#i18n{portal.util.labelEnabled}</span>
+                </#if>
+            </td>
+            <td>
+                ${bpbot.isStandalone}
+            </td>
+            <td>
+                ${bpbot.welcomeMessage}
+            </td>
+        <td>
+			<@aButton href='jsp/admin/plugins/botpress/ManageBPBots.jsp?view=modifyBPBot&id=${bpbot.id}' title='#i18n{portal.util.labelModify}' buttonIcon='pencil' showTitle=false />
+						
+			<@aButton href='jsp/admin/plugins/botpress/ManageBPBots.jsp?action=confirmRemoveBPBot&id=${bpbot.id}' title='#i18n{portal.util.labelDelete}' buttonIcon='trash' color='btn-danger' showTitle=false />
+
+        </td>
+        </tr>
+        </#list>
+    </@table>
+
+    <@paginationAdmin paginator=paginator />
+
+  </@boxBody>
+</@box>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plug-in>
+    <name>botpress</name>
+    <class>fr.paris.lutece.plugins.botpress.service.BotPressPlugin</class>
+    <version>1.0.0</version>
+    <documentation></documentation>
+    <installation></installation>
+    <changes></changes>
+    <user-guide></user-guide>
+    <description>botpress.plugin.description</description>
+    <provider>botpress.plugin.provider</provider>
+    <provider-url>http://dev.lutece.paris.fr</provider-url>
+    <icon-url>images/admin/skin/plugins/botpress/botpress.png</icon-url>
+    <copyright>Copyright (c) 2019 City of Paris</copyright>
+    <db-pool-required>1</db-pool-required>
+    
+    <core-version-dependency>
+        <min-core-version>4.1.0</min-core-version>
+        <max-core-version/>	
+    </core-version-dependency>
+
+    <!-- Admin features parameters -->
+    <admin-features>
+        <admin-feature>
+            <feature-id>BOTPRESS_MANAGEMENT</feature-id>
+            <feature-title>botpress.adminFeature.ManageBotPressBots.name</feature-title>
+            <feature-description>botpress.adminFeature.ManageBotPressBots.description</feature-description>
+            <feature-level>0</feature-level>
+            <feature-url>jsp/admin/plugins/botpress/ManageBPBots.jsp</feature-url>
+            <feature-icon-url></feature-icon-url>
+      </admin-feature>
+    </admin-features>    
+
+    <!-- XPages parameters -->
+    <applications>
+    </applications>
+
+    <!-- Portlet parameters -->
+    <portlets>
+   </portlets>
+</plug-in>
