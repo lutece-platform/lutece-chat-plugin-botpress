@@ -135,10 +135,17 @@ public class ConverseService
 
     }
 
+    /**
+     * Build the entry point URL
+     * @param strBotKey The bot key
+     * @param strServerUrl The server URL
+     * @param nApiVersion The API version number
+     * @return The entry point URL
+     */
     public static String getBotApiEntryPointUrl( String strBotKey, String strServerUrl, int nApiVersion )
     {
         StringBuilder sbEntryPointUrl = new StringBuilder( );
-        sbEntryPointUrl.append( ( strServerUrl.endsWith( "/" ) ) ? strServerUrl : "/" + strServerUrl ).append( "api/v" ).append( nApiVersion )
+        sbEntryPointUrl.append( ( strServerUrl.endsWith( "/" ) ) ? strServerUrl : strServerUrl + "/" ).append( "api/v" ).append( nApiVersion )
                 .append( "/bots/" ).append( strBotKey ).append( "/converse/" );
         return sbEntryPointUrl.toString( );
 
