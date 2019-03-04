@@ -82,7 +82,7 @@ public class ConverseService
         List<BotPost> listPosts = new ArrayList<>( );
         RequestMessage message = new RequestMessage( strMessage );
         String strUrl = null;
-        String strJsonResponse = null;
+        String strJsonResponsePretty = null;
         try
         {
             String strJsonMessage = _objectMapper.writeValueAsString( message );
@@ -91,8 +91,8 @@ public class ConverseService
             mapRequestHeaders.put( CONTENT_TYPE, CONTENT_TYPE_JSON );
             HashMap<String, String> mapResponseHeaders = new HashMap<>( );
             strUrl = strBotApiEntryPointUrl + strConversationId;
-            strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
-            strJsonResponse = _objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString( strJsonResponse );
+            String strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
+            strJsonResponsePretty = _objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString( strJsonResponse );
             parseJsonResponse( strJsonResponse, listPosts );
             return listPosts;
         }
@@ -103,9 +103,9 @@ public class ConverseService
             {
                 sbError.append( "\n - POST URL : " ).append( strUrl );
             }
-            if( strJsonResponse != null )
+            if( strJsonResponsePretty != null )
             {
-                sbError.append( "\n - JSON response : " ).append( strJsonResponse );
+                sbError.append( "\n - JSON response : " ).append( strJsonResponsePretty );
             }
             AppLogService.error( sbError.toString(), ex );
             
