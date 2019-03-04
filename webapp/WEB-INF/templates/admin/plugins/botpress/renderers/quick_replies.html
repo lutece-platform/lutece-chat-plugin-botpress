@@ -1,0 +1,11 @@
+${content.text!''} <br>
+
+<form action="jsp/site/Portal.jsp" method="post" >
+    <input type="hidden" name="page" value="chatbot" />
+    <input type="hidden" name="action" value="button_click" />
+    <#list content.quick_replies as button >
+    <button class="btn btn-primary" name="button_value" value="${button.title}|${button.payload}" type="submit">
+            ${button.title}  
+    </button>
+    </#list>
+</form>
