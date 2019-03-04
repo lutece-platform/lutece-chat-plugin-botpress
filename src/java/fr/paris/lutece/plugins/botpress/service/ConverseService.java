@@ -56,6 +56,12 @@ public class ConverseService
 
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String CONTENT_TYPE_JSON = "application/json";
+    private static final String FIELD_TYPE = "type";
+    private static final String TYPE_TEXT = "text";
+    private static final String FIELD_TEXT = "text";
+    private static final int VERSION_1 = 1;
+    
+    
     private static ObjectMapper _objectMapper = new ObjectMapper( );
 
     /**
@@ -75,6 +81,8 @@ public class ConverseService
     {
         List<BotPost> listPosts = new ArrayList<>( );
         RequestMessage message = new RequestMessage( strMessage );
+        String strUrl = null;
+        String strJsonResponse = null;
         try
         {
             String strJsonMessage = _objectMapper.writeValueAsString( message );
@@ -82,14 +90,25 @@ public class ConverseService
             HashMap<String, String> mapRequestHeaders = new HashMap<>( );
             mapRequestHeaders.put( CONTENT_TYPE, CONTENT_TYPE_JSON );
             HashMap<String, String> mapResponseHeaders = new HashMap<>( );
-            String strUrl = strBotApiEntryPointUrl + strConversationId;
-            String strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
+            strUrl = strBotApiEntryPointUrl + strConversationId;
+            strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
+            strJsonResponse = _objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString( strJsonResponse );
             parseJsonResponse( strJsonResponse, listPosts );
             return listPosts;
         }
         catch( HttpAccessException | IOException ex )
         {
-            AppLogService.error( "Error getting response from Botpress API : " + ex.getMessage( ), ex );
+            StringBuilder sbError = new StringBuilder( "Error getting response from Botpress API : " + ex.getMessage( ) );
+            if( strUrl != null )
+            {
+                sbError.append( "\n - POST URL : " ).append( strUrl );
+            }
+            if( strJsonResponse != null )
+            {
+                sbError.append( "\n - JSON response : " ).append( strJsonResponse );
+            }
+            AppLogService.error( sbError.toString(), ex );
+            
             return listPosts;
         }
 
@@ -113,9 +132,9 @@ public class ConverseService
         while ( elements.hasNext( ) )
         {
             JsonNode response = elements.next( );
-            if ( response.get( "type" ).asText( ).equals( "text" ) )
+            if ( response.get( FIELD_TYPE ).asText( ).equals( TYPE_TEXT ) )
             {
-                BotPost post = new BotPost( response.get( "text" ).asText( ) );
+                BotPost post = new BotPost( response.get( FIELD_TEXT ).asText( ) );
                 listPosts.add( post );
             }
         }
@@ -130,7 +149,7 @@ public class ConverseService
     public static ReferenceList getApiVersions( )
     {
         ReferenceList list = new ReferenceList( );
-        list.addItem( 1, "BotPress Converse API Version 1" );
+        list.addItem( VERSION_1 , "BotPress Converse API Version 1" );
         return list;
 
     }
@@ -145,8 +164,19 @@ public class ConverseService
     public static String getBotApiEntryPointUrl( String strBotKey, String strServerUrl, int nApiVersion )
     {
         StringBuilder sbEntryPointUrl = new StringBuilder( );
-        sbEntryPointUrl.append( ( strServerUrl.endsWith( "/" ) ) ? strServerUrl : strServerUrl + "/" ).append( "api/v" ).append( nApiVersion )
-                .append( "/bots/" ).append( strBotKey ).append( "/converse/" );
+        
+        switch( nApiVersion )
+        {
+            case VERSION_1 :
+                sbEntryPointUrl.append( ( strServerUrl.endsWith( "/" ) ) ? strServerUrl : strServerUrl + "/" )
+                        .append( "api/v1/bots/" ).append( strBotKey ).append( "/converse/" );
+                break;
+            
+            default:
+                AppLogService.error( "Invalid Bot Press API version number : " + nApiVersion );
+                break;
+                
+        }
         return sbEntryPointUrl.toString( );
 
     }
