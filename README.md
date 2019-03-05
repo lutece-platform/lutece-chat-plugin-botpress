@@ -11,9 +11,9 @@ The integration is based on the [Lutete Chatbot plugin](https://github.com/lutec
 
 Three modes of integration are possible:
  
-* mode 1: The cat is in the form of a web page (classic XPage)
-* mode 2: The cat comes in a popup that opens with a button at the bottom right of any page of the site
-* mode 3: The cat is integrated in // iframe // in another site
+* mode 1: The Chatbot is in the form of a web page (classic XPage)
+* mode 2: The Chatbot comes in a popup that opens with a button at the bottom right of any page of the site
+* mode 3: The Chatbot is integrated in *iframe* in another site
 
 
 To integrate a BotPress bot the only information needed is its identifier and the address of the server
@@ -33,7 +33,7 @@ Access to the web page is via the following URL:
 
 ```
 
-http: //myhost/jsp/site/Portal.jsp?page=chatbot
+http://myhost/jsp/site/Portal.jsp?page=chatbot
                     
 ```
 

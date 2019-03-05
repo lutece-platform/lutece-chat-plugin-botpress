@@ -10,13 +10,16 @@
             </p>
             <subsection name="Introduction">
                 <p>This plugins lets embed BotPress bots into the Lutece site</p>
-                <p> The integration is based on the <a href="https://github.com/lutece-platform/lutece-chat-plugin-chatbot">Lutete Chatbot plugin</a> providing the conversational UI.</p>
+                <p>
+                    The integration is based on the <a href="https://github.com/lutece-platform/lutece-chat-plugin-chatbot">Lutete Chatbot plugin</a>
+                    providing the conversational UI.
+                </p>
                 <p>
                     Three modes of integration are possible:
                     <ul>
-                        <li> mode 1: The cat is in the form of a web page (classic XPage)</li>
-                        <li>  mode 2: The cat comes in a popup that opens with a button at the bottom right of any page of the site</li>
-                        <li>  mode 3: The cat is integrated in // iframe // in another site</li>
+                        <li> mode 1: The Chatbot is in the form of a web page (classic XPage)</li>
+                        <li> mode 2: The Chatbot comes in a popup that opens with a button at the bottom right of any page of the site</li>
+                        <li> mode 3: The Chatbot is integrated in <em>iframe</em> in another site</li>
                     </ul>
                 </p>
 
@@ -42,7 +45,7 @@
 
                 <p>
                     <pre>
-http: //myhost/jsp/site/Portal.jsp?page=chatbot
+http://myhost/jsp/site/Portal.jsp?page=chatbot
                     </pre>
                 </p>
 
