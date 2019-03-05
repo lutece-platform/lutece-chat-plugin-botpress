@@ -9,7 +9,7 @@
                 <img src="images/botpress.png" />
             </p>
             <subsection name="Introduction">
-                <p>This plugins lets embed BotPress bots into the Lutece site</p>
+                <p>This plugins lets embed bots powered by <a href="https://botpress.io/">BotPress</a> into a Lutece site</p>
                 <p>
                     The integration is based on the <a href="https://github.com/lutece-platform/lutece-chat-plugin-chatbot">Lutete Chatbot plugin</a>
                     providing the conversational UI.
@@ -17,9 +17,9 @@
                 <p>
                     Three modes of integration are possible:
                     <ul>
-                        <li> mode 1: The Chatbot is in the form of a web page (classic XPage)</li>
-                        <li> mode 2: The Chatbot comes in a popup that opens with a button at the bottom right of any page of the site</li>
-                        <li> mode 3: The Chatbot is integrated in <em>iframe</em> in another site</li>
+                        <li> Mode 1: The Chatbot is in web page (classic XPage)</li>
+                        <li> Mode 2: The Chatbot comes in a popup that opens with a button at the bottom right of any page of the site</li>
+                        <li> Mode 3: The Chatbot is integrated in <em>iframe</em> in another site</li>
                     </ul>
                 </p>
 
@@ -39,7 +39,7 @@
             </subsection>
             <subsection name="Usage">
                 <p>
-                    <strong>Mode 1: web page</strong>
+                    <strong>Mode 1: Web page</strong>
                 </p>
                 <p> Access to the web page is via the following URL:</p>
 
