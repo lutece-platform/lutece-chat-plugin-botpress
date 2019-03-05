@@ -9,13 +9,66 @@
                 <img src="images/botpress.png" />
             </p>
             <subsection name="Introduction">
-                <p>This plugins lets integrate BotPress bots into the Lutece Chatbot conversational UI.</p>
+                <p>This plugins lets embed BotPress bots into the Lutece site</p>
+                <p> The integration is based on the <a href="https://github.com/lutece-platform/lutece-chat-plugin-chatbot">Lutete Chatbot plugin</a> providing the conversational UI.</p>
+                <p>
+                    Three modes of integration are possible:
+                    <ul>
+                        <li> mode 1: The cat is in the form of a web page (classic XPage)</li>
+                        <li>  mode 2: The cat comes in a popup that opens with a button at the bottom right of any page of the site</li>
+                        <li>  mode 3: The cat is integrated in // iframe // in another site</li>
+                    </ul>
+                </p>
+
+                <p>To integrate a BotPress bot the only information needed is its identifier and the address of the server</p>
+                
             </subsection>
             <subsection name="Configuration">
-                <p>Deploy this plugin with the lutece chatbot plugin and Manage BotPress bots access in the Back Office</p>
+                <p>
+                    Deploy this plugin with the <a href="https://github.com/lutece-platform/lutece-chat-plugin-chatbot">chatbot plugin</a> 
+                    and Manage BotPress bots access in the Back Office
+                </p>
+                <p>
+                    To declare a BotPress bot in the Lutece Back Office <strong>Manage BotPress Bots</strong>
+                    then click on <strong>Add Bot</strong> and fill in the following fields:
+                    <img src="images/botpress_back.png" />
+                </p>
             </subsection>
             <subsection name="Usage">
-                <p></p>
+                <p>
+                    <strong>Mode 1: web page</strong>
+                </p>
+                <p> Access to the web page is via the following URL:</p>
+
+                <p>
+                    <pre>
+http: //myhost/jsp/site/Portal.jsp?page=chatbot
+                    </pre>
+                </p>
+
+                <br/>
+                <strong>Mode 2: Integration via a popup </strong>
+                <p>
+                    This integration is done by adding the bookmark of the PageInclude proposed by the ChatBot plugin 
+                    in the HTML template of the site (file <code>WEB-INF/templates/site/page_frameset.html</code>).
+                    You must add the following line in this file before closing the body tag.
+                </p>
+                <p>
+                    <pre>
+$ {chat_popup_include}
+                    </pre>
+                </p>
+                <p>
+                    <strong> Mode 3: iFrame</strong>
+                </p>
+                <p>
+                    The URL to source the IFRAME is:
+                </p>
+                <p>
+                    <pre>
+https://myhost/jsp/site/Portal.jsp?page=chatbot&amp;view=bot&amp;bot=mybot&amp;standalone=true&amp;lang=en
+                    </pre>
+                </p>
             </subsection>
         </section>
     </body>

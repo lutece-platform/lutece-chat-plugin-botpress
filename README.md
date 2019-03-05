@@ -1,18 +1,63 @@
-![](https://dev.lutece.paris.fr/jenkins/buildStatus/icon?job=plugin-botpress-deploy)
+![](https://dev.lutece.paris.fr/jenkins/buildStatus/icon?job=chat-plugin-botpress-deploy)
 # Plugin botpress
 
 ![](https://dev.lutece.paris.fr/plugins/plugin-botpress/images/botpress.png)
 
 ## Introduction
 
-This plugins lets integrate BotPress bots into the Lutece Chatbot conversational UI.
+This plugins lets embed BotPress bots into the Lutece site
+
+The integration is based on the [Lutete Chatbot plugin](https://github.com/lutece-platform/lutece-chat-plugin-chatbot) providing the conversational UI.
+
+Three modes of integration are possible:
+ 
+* mode 1: The cat is in the form of a web page (classic XPage)
+* mode 2: The cat comes in a popup that opens with a button at the bottom right of any page of the site
+* mode 3: The cat is integrated in // iframe // in another site
+
+
+To integrate a BotPress bot the only information needed is its identifier and the address of the server
 
 ## Configuration
 
-Deploy this plugin with the lutece chatbot plugin and Manage BotPress bots access in the Back Office
+Deploy this plugin with the [chatbot plugin](https://github.com/lutece-platform/lutece-chat-plugin-chatbot) and Manage BotPress bots access in the Back Office
+
+To declare a BotPress bot in the Lutece Back Office **Manage BotPress Bots** then click on **Add Bot** and fill in the following fields:![](https://dev.lutece.paris.fr/plugins/plugin-botpress/images/botpress_back.png)
 
 ## Usage
 
+ **Mode 1: web page** 
+
+Access to the web page is via the following URL:
+
+
+```
+
+http: //myhost/jsp/site/Portal.jsp?page=chatbot
+                    
+```
+
+ **Mode 2: Integration via a popup** 
+This integration is done by adding the bookmark of the PageInclude proposed by the ChatBot plugin in the HTML template of the site (file `WEB-INF/templates/site/page_frameset.html` ). You must add the following line in this file before closing the body tag.
+
+
+```
+
+$ {chat_popup_include}
+                    
+```
+
+
+ **Mode 3: iFrame** 
+
+The URL to source the IFRAME is:
+
+
+```
+
+https://myhost/jsp/site/Portal.jsp?page=chatbot&view=bot&bot=mybot&standalone=true&lang=en
+                    
+```
 
 
 

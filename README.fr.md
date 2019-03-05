@@ -1,4 +1,4 @@
-![](https://dev.lutece.paris.fr/jenkins/buildStatus/icon?job=plugin-botpress-deploy)
+![](https://dev.lutece.paris.fr/jenkins/buildStatus/icon?job=chat-plugin-botpress-deploy)
 # Plugin botpress
 
 ## Introduction
