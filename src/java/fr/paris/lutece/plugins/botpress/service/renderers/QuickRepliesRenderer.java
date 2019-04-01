@@ -36,6 +36,7 @@ package fr.paris.lutece.plugins.botpress.service.renderers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import fr.paris.lutece.plugins.botpress.service.BotMessageRenderer;
+import fr.paris.lutece.plugins.chatbot.business.Post;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.web.l10n.LocaleService;
 import fr.paris.lutece.util.html.HtmlTemplate;
@@ -51,12 +52,18 @@ public class QuickRepliesRenderer implements BotMessageRenderer
     private static final String MARK_CONTENT = "content";
     private static final String TEMPLATE_QUICK_REPLIES = "/admin/plugins/botpress/renderers/quick_replies.html";
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public boolean isInvoked( JsonNode nodeResponse )
     {
         return nodeResponse.get( FIELD_QUICK_REPLIES ) != null;
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public String render( Map map )
     {
@@ -66,5 +73,16 @@ public class QuickRepliesRenderer implements BotMessageRenderer
 
         return template.getHtml( );
     }
+    
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public String getPostContentType()
+    {
+        return Post.CONTENT_TYPE_QUICK_REPLIES;
+    }
+    
+    
 
 }

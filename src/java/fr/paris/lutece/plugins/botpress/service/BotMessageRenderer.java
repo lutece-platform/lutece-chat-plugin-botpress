@@ -63,4 +63,11 @@ public interface BotMessageRenderer
      * @return The rendered HTML
      */
     String render( Map map );
+    
+    /**
+     * Return the content type corresponding to this renderer
+     * @return The content type
+     */
+    String getPostContentType();
+    
 }

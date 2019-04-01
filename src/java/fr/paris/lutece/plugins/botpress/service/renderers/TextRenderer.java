@@ -36,6 +36,7 @@ package fr.paris.lutece.plugins.botpress.service.renderers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import fr.paris.lutece.plugins.botpress.service.BotMessageRenderer;
+import fr.paris.lutece.plugins.chatbot.business.Post;
 import java.util.Map;
 
 /**
@@ -61,4 +62,15 @@ public class TextRenderer implements BotMessageRenderer
     {
         return (String) map.get( FIELD_TEXT );
     }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public String getPostContentType()
+    {
+        return Post.CONTENT_TYPE_TEXT;
+    }
+    
+    
 }

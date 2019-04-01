@@ -133,7 +133,7 @@ public class ConverseService
             BotMessageRenderer renderer = RendererService.getRenderer( response );
             if ( renderer != null )
             {
-                BotPost post = new BotPost( renderer.render( _objectMapper.convertValue( response, Map.class ) ) );
+                BotPost post = new BotPost( renderer.render( _objectMapper.convertValue( response, Map.class ) ) , renderer.getPostContentType() );
                 listPosts.add( post );
             }
         }
