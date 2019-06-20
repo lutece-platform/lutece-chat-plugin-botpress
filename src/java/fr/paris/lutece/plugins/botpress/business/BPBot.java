@@ -81,6 +81,8 @@ public class BPBot implements Serializable
     private String _strServerUrl;
 
     private int _nApiVersion;
+    
+    private String _strAvatarRendererKey;
 
     /**
      * Returns the Id
@@ -312,4 +314,30 @@ public class BPBot implements Serializable
     {
         _nApiVersion = nApiVersion;
     }
+    
+    
+    /**
+     * Returns the AvatarRendererKey
+     * 
+     * @return The AvatarRendererKey
+     */
+    public String getAvatarRendererKey( )
+    {
+        return _strAvatarRendererKey;
+    }
+
+    /**
+     * Sets the AvatarRendererKey
+     * 
+     * @param strAvatarRendererKey
+     *            The AvatarRendererKey
+     */
+    public void setAvatarRendererKey( String strAvatarRendererKey )
+    {
+        _strAvatarRendererKey = strAvatarRendererKey;
+    }
+    
+    
+    
+    
 }

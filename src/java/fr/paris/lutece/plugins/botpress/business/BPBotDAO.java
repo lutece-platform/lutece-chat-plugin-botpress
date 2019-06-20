@@ -48,11 +48,11 @@ import java.util.List;
 public final class BPBotDAO implements IBPBotDAO
 {
     // Constants
-    private static final String SQL_QUERY_SELECT = "SELECT id_b_p_bot, bot_key, name, description, avatar_url, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots WHERE id_b_p_bot = ?";
-    private static final String SQL_QUERY_INSERT = "INSERT INTO botpress_bots ( bot_key, name, description, avatar_url, language, bot_status, is_standalone, welcome_message, server_url, api_version ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
+    private static final String SQL_QUERY_SELECT = "SELECT id_b_p_bot, bot_key, name, description, avatar_url, avatar_renderer_key, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots WHERE id_b_p_bot = ?";
+    private static final String SQL_QUERY_INSERT = "INSERT INTO botpress_bots ( bot_key, name, description, avatar_url, avatar_renderer_key,language, bot_status, is_standalone, welcome_message, server_url, api_version ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
     private static final String SQL_QUERY_DELETE = "DELETE FROM botpress_bots WHERE id_b_p_bot = ? ";
-    private static final String SQL_QUERY_UPDATE = "UPDATE botpress_bots SET id_b_p_bot = ?, bot_key = ?, name = ?, description = ?, avatar_url = ?, language = ?, bot_status = ?, is_standalone = ?, welcome_message = ?, server_url = ?, api_version = ? WHERE id_b_p_bot = ?";
-    private static final String SQL_QUERY_SELECTALL = "SELECT id_b_p_bot, bot_key, name, description, avatar_url, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots";
+    private static final String SQL_QUERY_UPDATE = "UPDATE botpress_bots SET id_b_p_bot = ?, bot_key = ?, name = ?, description = ?, avatar_url = ?, avatar_renderer_key = ?,language = ?, bot_status = ?, is_standalone = ?, welcome_message = ?, server_url = ?, api_version = ? WHERE id_b_p_bot = ?";
+    private static final String SQL_QUERY_SELECTALL = "SELECT id_b_p_bot, bot_key, name, description, avatar_url, avatar_renderer_key, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots";
     private static final String SQL_QUERY_SELECTALL_ID = "SELECT id_b_p_bot FROM botpress_bots";
 
     /**
@@ -69,6 +69,7 @@ public final class BPBotDAO implements IBPBotDAO
             daoUtil.setString( nIndex++, bPBot.getName( ) );
             daoUtil.setString( nIndex++, bPBot.getDescription( ) );
             daoUtil.setString( nIndex++, bPBot.getAvatarUrl( ) );
+            daoUtil.setString( nIndex++, bPBot.getAvatarRendererKey() );
             daoUtil.setString( nIndex++, bPBot.getLanguage( ) );
             daoUtil.setInt( nIndex++, bPBot.getBotStatus( ) );
             daoUtil.setInt( nIndex++, bPBot.getIsStandalone( ) );
@@ -109,6 +110,7 @@ public final class BPBotDAO implements IBPBotDAO
             bPBot.setName( daoUtil.getString( nIndex++ ) );
             bPBot.setDescription( daoUtil.getString( nIndex++ ) );
             bPBot.setAvatarUrl( daoUtil.getString( nIndex++ ) );
+            bPBot.setAvatarRendererKey(daoUtil.getString( nIndex++ ) );
             bPBot.setLanguage( daoUtil.getString( nIndex++ ) );
             bPBot.setBotStatus( daoUtil.getInt( nIndex++ ) );
             bPBot.setIsStandalone( daoUtil.getInt( nIndex++ ) );
@@ -147,6 +149,7 @@ public final class BPBotDAO implements IBPBotDAO
         daoUtil.setString( nIndex++, bPBot.getName( ) );
         daoUtil.setString( nIndex++, bPBot.getDescription( ) );
         daoUtil.setString( nIndex++, bPBot.getAvatarUrl( ) );
+        daoUtil.setString( nIndex++, bPBot.getAvatarRendererKey( ) );
         daoUtil.setString( nIndex++, bPBot.getLanguage( ) );
         daoUtil.setInt( nIndex++, bPBot.getBotStatus( ) );
         daoUtil.setInt( nIndex++, bPBot.getIsStandalone( ) );
@@ -179,6 +182,7 @@ public final class BPBotDAO implements IBPBotDAO
             bPBot.setName( daoUtil.getString( nIndex++ ) );
             bPBot.setDescription( daoUtil.getString( nIndex++ ) );
             bPBot.setAvatarUrl( daoUtil.getString( nIndex++ ) );
+            bPBot.setAvatarRendererKey( daoUtil.getString( nIndex++ ) );
             bPBot.setLanguage( daoUtil.getString( nIndex++ ) );
             bPBot.setBotStatus( daoUtil.getInt( nIndex++ ) );
             bPBot.setIsStandalone( daoUtil.getInt( nIndex++ ) );

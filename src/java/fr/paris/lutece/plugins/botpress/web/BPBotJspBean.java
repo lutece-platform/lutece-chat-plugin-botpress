@@ -39,6 +39,7 @@ import fr.paris.lutece.plugins.botpress.business.BPBotHome;
 import fr.paris.lutece.plugins.botpress.service.BotRegistrationService;
 import fr.paris.lutece.plugins.botpress.service.ConverseService;
 import fr.paris.lutece.plugins.botpress.service.LanguageService;
+import fr.paris.lutece.plugins.chatbot.service.avatar.AvatarRendererService;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
@@ -76,6 +77,7 @@ public class BPBotJspBean extends MVCAdminJspBean
     private static final String MARK_BPBOT_LIST = "bpbot_list";
     private static final String MARK_BPBOT = "bpbot";
     private static final String MARK_VERSIONS_LIST = "versions_list";
+    private static final String MARK_AVATAR_RENDERERS = "avatar_renderers_list";
 
     // Templates
     private static final String TEMPLATE_MANAGE_BPBOTS = "/admin/plugins/botpress/manage_bpbots.html";
@@ -187,6 +189,7 @@ public class BPBotJspBean extends MVCAdminJspBean
         model.put( MARK_LANGUAGES_LIST, LanguageService.getLanguages( getLocale( ) ) );
         model.put( MARK_MODES_LIST, BotRegistrationService.getModes( getLocale( ) ) );
         model.put( MARK_VERSIONS_LIST, ConverseService.getApiVersions( ) );
+        model.put( MARK_AVATAR_RENDERERS, AvatarRendererService.getAvatarRenderersList() );
 
         return getPage( PROPERTY_PAGE_TITLE_CREATE_BPBOT, TEMPLATE_CREATE_BPBOT, model );
     }
@@ -274,6 +277,7 @@ public class BPBotJspBean extends MVCAdminJspBean
         model.put( MARK_LANGUAGES_LIST, LanguageService.getLanguages( getLocale( ) ) );
         model.put( MARK_MODES_LIST, BotRegistrationService.getModes( getLocale( ) ) );
         model.put( MARK_VERSIONS_LIST, ConverseService.getApiVersions( ) );
+        model.put( MARK_AVATAR_RENDERERS, AvatarRendererService.getAvatarRenderersList() );
 
         return getPage( PROPERTY_PAGE_TITLE_MODIFY_BPBOT, TEMPLATE_MODIFY_BPBOT, model );
     }

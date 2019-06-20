@@ -24,6 +24,9 @@
 				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelAvatarUrl}' helpKey='#i18n{botpress.create_bpbot.labelAvatarUrl.help}' mandatory=true>
 					<@input type='text' name='avatar_url' value='${bpbot.avatarUrl!\'\'}' />
 				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelAvatarRenderer}' helpKey='#i18n{botpress.create_bpbot.labelAvatarRenderer.help}' mandatory=true>
+					 <@select name='avatar_renderer_key' items=avatar_renderers_list default_value='${bpbot.avatarRendererKey!\'\'}' />
+				</@formGroup>
 				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelLanguage}' helpKey='#i18n{botpress.create_bpbot.labelLanguage.help}' mandatory=true>
 					 <@select name='language' items=languages_list default_value='${bpbot.language!\'\'}' />
 				</@formGroup>

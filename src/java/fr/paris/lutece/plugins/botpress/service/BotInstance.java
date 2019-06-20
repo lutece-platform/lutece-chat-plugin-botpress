@@ -60,6 +60,7 @@ public final class BotInstance extends AbstractChatBot
         setAvatarUrl( bot.getAvatarUrl( ) );
         setStandalone( bot.getIsStandalone( ) != 0 );
         setWelcomeMessage( bot.getWelcomeMessage( ) );
+        setAvatarRendererKey( bot.getAvatarRendererKey() );
         _strBotApiEntryPointUrl = ConverseService.getBotApiEntryPointUrl( bot.getBotKey( ), bot.getServerUrl( ), bot.getApiVersion( ) );
 
     }
