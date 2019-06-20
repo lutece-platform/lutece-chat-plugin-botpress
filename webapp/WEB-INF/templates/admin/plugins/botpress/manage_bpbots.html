@@ -27,7 +27,9 @@
         <tr>
             <input type="hidden" id="id" name="id"/>
             <td>
-                <img src="${bpbot.avatarUrl}" alt="avatar" width="48"/>
+                <a href="jsp/site/Portal.jsp?page=chatbot&view=bot&bot=${bpbot.botKey}&lang=${bpbot.language}" target="_blank" >
+                    <img src="${bpbot.avatarUrl}" alt="avatar" width="48"/>
+                </a>
             </td>
             <td>
                 <strong>${bpbot.botKey}</strong>
