@@ -9,5 +9,6 @@
 
     <bean id="botpress.rendererText" class="fr.paris.lutece.plugins.botpress.service.renderers.TextRenderer" />
     <bean id="botpress.rendererQuickReplies" class="fr.paris.lutece.plugins.botpress.service.renderers.QuickRepliesRenderer" />
+    <bean id="botpress.rendererFile" class="fr.paris.lutece.plugins.botpress.service.renderers.FileRenderer" />
     
 </beans>

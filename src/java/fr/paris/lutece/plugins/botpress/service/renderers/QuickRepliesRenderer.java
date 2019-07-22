@@ -48,9 +48,9 @@ import java.util.Map;
  */
 public class QuickRepliesRenderer implements BotMessageRenderer
 {
-    private static final String FIELD_QUICK_REPLIES = "quick_replies";
-    private static final String MARK_CONTENT = "content";
     private static final String TEMPLATE_QUICK_REPLIES = "/admin/plugins/botpress/renderers/quick_replies.html";
+    private static final String MARK_CONTENT = "content";
+    private static final String FIELD_QUICK_REPLIES = "quick_replies";
 
     /**
      * {@inheritDoc }

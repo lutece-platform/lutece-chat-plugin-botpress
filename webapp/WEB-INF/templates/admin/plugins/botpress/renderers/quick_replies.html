@@ -1,5 +1,11 @@
 ${content.text!''} <br>
 
+<#if content.wrapped ??>
+    ${content.wrapped.text}
+    <br>
+    <br>
+</#if>
+
 <form action="jsp/site/Portal.jsp" method="post" >
     <input type="hidden" name="page" value="chatbot" />
     <input type="hidden" name="action" value="button_click" />

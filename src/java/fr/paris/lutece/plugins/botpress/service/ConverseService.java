@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.botpress.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import fr.paris.lutece.plugins.botpress.business.RequestMessage;
 import fr.paris.lutece.plugins.chatbot.business.BotPost;
 import fr.paris.lutece.portal.service.util.AppLogService;
@@ -48,6 +49,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 /**
  * ConverseService
@@ -60,6 +62,8 @@ public class ConverseService
     private static final String NODE_RESPONSES = "responses";
     private static final int VERSION_1 = 1;
 
+    private static final String LOGGER_NAME = "botpress";
+    private static final Logger LOGGER = Logger.getLogger( LOGGER_NAME );
     private static ObjectMapper _objectMapper = new ObjectMapper( );
 
     /**
@@ -90,7 +94,10 @@ public class ConverseService
             HashMap<String, String> mapResponseHeaders = new HashMap<>( );
             strUrl = strBotApiEntryPointUrl + strConversationId;
             String strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
-            strJsonResponsePretty = _objectMapper.writerWithDefaultPrettyPrinter( ).writeValueAsString( strJsonResponse );
+            Object jsonResponse = _objectMapper.readTree( strJsonResponse );
+//            _objectMapper.enable( SerializationFeature.INDENT_OUTPUT );
+            strJsonResponsePretty = _objectMapper.writerWithDefaultPrettyPrinter( ).writeValueAsString( jsonResponse );
+            LOGGER.debug( "Message : " + strMessage + "\nResponse : \n" + strJsonResponsePretty );
             parseJsonResponse( strJsonResponse, listPosts );
             return listPosts;
         }

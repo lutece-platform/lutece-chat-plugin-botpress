@@ -44,7 +44,9 @@ public interface BotMessageRenderer
 {
     static final String FIELD_TYPE = "type";
     static final String TYPE_TEXT = "text";
+    static final String TYPE_FILE = "file";
     static final String FIELD_TEXT = "text";
+    static final String FIELD_URL = "url";
 
     /**
      * Analyze the response node to tell if this renderer should be invoked
