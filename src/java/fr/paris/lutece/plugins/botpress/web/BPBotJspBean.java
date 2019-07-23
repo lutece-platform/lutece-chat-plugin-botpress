@@ -40,8 +40,10 @@ import fr.paris.lutece.plugins.botpress.service.BotRegistrationService;
 import fr.paris.lutece.plugins.botpress.service.ConverseService;
 import fr.paris.lutece.plugins.botpress.service.LanguageService;
 import fr.paris.lutece.plugins.chatbot.service.avatar.AvatarRendererService;
+import fr.paris.lutece.portal.service.i18n.I18nService;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
+import fr.paris.lutece.portal.service.util.AppException;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.portal.util.mvc.admin.MVCAdminJspBean;
 import fr.paris.lutece.portal.util.mvc.admin.annotations.Controller;
@@ -94,6 +96,8 @@ public class BPBotJspBean extends MVCAdminJspBean
 
     // Properties
     private static final String MESSAGE_CONFIRM_REMOVE_BPBOT = "botpress.message.confirmRemoveBPBot";
+    private static final String MESSAGE_ERROR_CREATING_BOT = "botpress.message.error.create";
+    private static final String MESSAGE_ERROR_MODIFYING_BOT = "botpress.message.error.modify";
 
     // Validations
     private static final String VALIDATION_ATTRIBUTES_PREFIX = "botpress.model.entity.bpbot.attribute.";
@@ -212,7 +216,15 @@ public class BPBotJspBean extends MVCAdminJspBean
             return redirectView( request, VIEW_CREATE_BPBOT );
         }
 
-        BPBotHome.create( _bpbot );
+        try 
+        {
+            BPBotHome.create( _bpbot );
+        }
+        catch( AppException e )
+        {
+            addError( I18nService.getLocalizedString( MESSAGE_ERROR_CREATING_BOT, getLocale( ) ) );
+            return redirectView( request, VIEW_CREATE_BPBOT );
+        }
         addInfo( INFO_BPBOT_CREATED, getLocale( ) );
 
         return redirectView( request, VIEW_MANAGE_BPBOTS );
@@ -299,8 +311,15 @@ public class BPBotJspBean extends MVCAdminJspBean
         {
             return redirect( request, VIEW_MODIFY_BPBOT, PARAMETER_ID_BPBOT, _bpbot.getId( ) );
         }
-
-        BPBotHome.update( _bpbot );
+        try
+        {
+            BPBotHome.update( _bpbot );
+        }
+        catch( AppException e )
+        {
+            addError( I18nService.getLocalizedString( MESSAGE_ERROR_MODIFYING_BOT, getLocale( ) ) );
+            return redirect( request, VIEW_MODIFY_BPBOT, PARAMETER_ID_BPBOT, _bpbot.getId( ) );
+        }
         addInfo( INFO_BPBOT_UPDATED, getLocale( ) );
 
         return redirectView( request, VIEW_MANAGE_BPBOTS );
