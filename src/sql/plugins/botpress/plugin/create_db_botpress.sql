@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS botpress_bots;
 CREATE TABLE botpress_bots (
 id_b_p_bot int AUTO_INCREMENT,
 bot_key varchar(50) default '' NOT NULL,
+botpress_key varchar(50) default '' NOT NULL,
 name varchar(50) default '' NOT NULL,
 description varchar(255) default '' NOT NULL,
 avatar_url varchar(255) default '' NOT NULL,
@@ -19,3 +20,6 @@ server_url varchar(255) default '' NOT NULL,
 api_version int default '0',
 PRIMARY KEY (id_b_p_bot)
 );
+
+CREATE UNIQUE INDEX uidx_botpress_bots
+ON botpress_bots (bot_key); 

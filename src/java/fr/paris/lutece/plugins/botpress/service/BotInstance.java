@@ -49,6 +49,10 @@ public final class BotInstance extends AbstractChatBot
 
     private String _strBotApiEntryPointUrl;
 
+    /**
+     * Constructor
+     * @param bot The BotPress bot
+     */
     public BotInstance( BPBot bot )
     {
         setKey( bot.getBotKey( ) );
@@ -61,7 +65,7 @@ public final class BotInstance extends AbstractChatBot
         setStandalone( bot.getIsStandalone( ) != 0 );
         setWelcomeMessage( bot.getWelcomeMessage( ) );
         setAvatarRendererKey( bot.getAvatarRendererKey() );
-        _strBotApiEntryPointUrl = ConverseService.getBotApiEntryPointUrl( bot.getBotKey( ), bot.getServerUrl( ), bot.getApiVersion( ) );
+        _strBotApiEntryPointUrl = ConverseService.getBotApiEntryPointUrl( bot.getBotPressKey( ), bot.getServerUrl( ), bot.getApiVersion( ) );
 
     }
 

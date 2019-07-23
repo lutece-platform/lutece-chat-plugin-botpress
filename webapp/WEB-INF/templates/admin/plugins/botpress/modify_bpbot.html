@@ -8,6 +8,9 @@
 				<@formGroup labelKey='#i18n{botpress.modify_bpbot.labelBotKey}' helpKey='#i18n{botpress.modify_bpbot.labelBotKey.help}' mandatory=true>
 					<@input type='text' name='bot_key' value='${bpbot.botKey!\'\'}' />
 				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.modify_bpbot.labelBotPressKey}' helpKey='#i18n{botpress.modify_bpbot.labelBotPressKey.help}' mandatory=true>
+					<@input type='text' name='bot_press_key' value='${bpbot.botPressKey!\'\'}' />
+				</@formGroup>
 				<@formGroup labelKey='#i18n{botpress.modify_bpbot.labelName}' helpKey='#i18n{botpress.modify_bpbot.labelName.help}' mandatory=true>
 					<@input type='text' name='name' value='${bpbot.name!\'\'}' />
 				</@formGroup>

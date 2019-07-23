@@ -123,16 +123,6 @@ public final class BPBotHome
     }
 
     /**
-     * Load the id of all the bPBot objects and returns them as a list
-     * 
-     * @return the list which contains the id of all the bPBot objects
-     */
-    public static List<Integer> getIdBPBotsList( )
-    {
-        return _dao.selectIdBPBotsList( _plugin );
-    }
-
-    /**
      * Load the data of all the bPBot objects and returns them as a referenceList
      * 
      * @return the referenceList which contains the data of all the bPBot objects

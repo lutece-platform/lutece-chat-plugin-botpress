@@ -96,14 +96,6 @@ public interface IBPBotDAO
      */
     List<BPBot> selectBPBotsList( Plugin plugin );
 
-    /**
-     * Load the id of all the bPBot objects and returns them as a list
-     * 
-     * @param plugin
-     *            the Plugin
-     * @return The list which contains the id of all the bPBot objects
-     */
-    List<Integer> selectIdBPBotsList( Plugin plugin );
 
     /**
      * Load the data of all the bPBot objects and returns them as a referenceList

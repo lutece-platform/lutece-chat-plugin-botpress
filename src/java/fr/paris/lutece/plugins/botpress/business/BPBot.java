@@ -53,6 +53,10 @@ public class BPBot implements Serializable
     @Size( max = 50, message = "#i18n{botpress.validation.bpbot.BotKey.size}" )
     private String _strBotKey;
 
+    @NotEmpty( message = "#i18n{botpress.validation.bpbot.BotPressKey.notEmpty}" )
+    @Size( max = 50, message = "#i18n{botpress.validation.bpbot.BotPressKey.size}" )
+    private String _strBotPressKey;
+
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.Name.notEmpty}" )
     @Size( max = 50, message = "#i18n{botpress.validation.bpbot.Name.size}" )
     private String _strName;
@@ -124,6 +128,27 @@ public class BPBot implements Serializable
     public void setBotKey( String strBotKey )
     {
         _strBotKey = strBotKey;
+    }
+
+    /**
+     * Returns the BotPressKey
+     * 
+     * @return The BotPressKey
+     */
+    public String getBotPressKey( )
+    {
+        return _strBotPressKey;
+    }
+
+    /**
+     * Sets the BotPressKey
+     * 
+     * @param strBotPressKey
+     *            The BotPressKey
+     */
+    public void setBotPressKey( String strBotPressKey )
+    {
+        _strBotPressKey = strBotPressKey;
     }
 
     /**

@@ -95,7 +95,6 @@ public class ConverseService
             strUrl = strBotApiEntryPointUrl + strConversationId;
             String strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
             Object jsonResponse = _objectMapper.readTree( strJsonResponse );
-//            _objectMapper.enable( SerializationFeature.INDENT_OUTPUT );
             strJsonResponsePretty = _objectMapper.writerWithDefaultPrettyPrinter( ).writeValueAsString( jsonResponse );
             LOGGER.debug( "Message : " + strMessage + "\nResponse : \n" + strJsonResponsePretty );
             parseJsonResponse( strJsonResponse, listPosts );

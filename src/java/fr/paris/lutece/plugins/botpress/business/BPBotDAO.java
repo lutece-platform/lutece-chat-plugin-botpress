@@ -48,12 +48,11 @@ import java.util.List;
 public final class BPBotDAO implements IBPBotDAO
 {
     // Constants
-    private static final String SQL_QUERY_SELECT = "SELECT id_b_p_bot, bot_key, name, description, avatar_url, avatar_renderer_key, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots WHERE id_b_p_bot = ?";
-    private static final String SQL_QUERY_INSERT = "INSERT INTO botpress_bots ( bot_key, name, description, avatar_url, avatar_renderer_key,language, bot_status, is_standalone, welcome_message, server_url, api_version ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
+    private static final String SQL_QUERY_SELECT = "SELECT id_b_p_bot, bot_key, botpress_key, name, description, avatar_url, avatar_renderer_key, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots WHERE id_b_p_bot = ?";
+    private static final String SQL_QUERY_INSERT = "INSERT INTO botpress_bots ( bot_key, botpress_key, name, description, avatar_url, avatar_renderer_key,language, bot_status, is_standalone, welcome_message, server_url, api_version ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
     private static final String SQL_QUERY_DELETE = "DELETE FROM botpress_bots WHERE id_b_p_bot = ? ";
-    private static final String SQL_QUERY_UPDATE = "UPDATE botpress_bots SET id_b_p_bot = ?, bot_key = ?, name = ?, description = ?, avatar_url = ?, avatar_renderer_key = ?,language = ?, bot_status = ?, is_standalone = ?, welcome_message = ?, server_url = ?, api_version = ? WHERE id_b_p_bot = ?";
-    private static final String SQL_QUERY_SELECTALL = "SELECT id_b_p_bot, bot_key, name, description, avatar_url, avatar_renderer_key, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots";
-    private static final String SQL_QUERY_SELECTALL_ID = "SELECT id_b_p_bot FROM botpress_bots";
+    private static final String SQL_QUERY_UPDATE = "UPDATE botpress_bots SET id_b_p_bot = ?, bot_key = ?, botpress_key = ?, name = ?, description = ?, avatar_url = ?, avatar_renderer_key = ?,language = ?, bot_status = ?, is_standalone = ?, welcome_message = ?, server_url = ?, api_version = ? WHERE id_b_p_bot = ?";
+    private static final String SQL_QUERY_SELECTALL = "SELECT id_b_p_bot, bot_key, botpress_key, name, description, avatar_url, avatar_renderer_key, language, bot_status, is_standalone, welcome_message, server_url, api_version FROM botpress_bots";
 
     /**
      * {@inheritDoc }
@@ -66,6 +65,7 @@ public final class BPBotDAO implements IBPBotDAO
         {
             int nIndex = 1;
             daoUtil.setString( nIndex++, bPBot.getBotKey( ) );
+            daoUtil.setString( nIndex++, bPBot.getBotPressKey( ) );
             daoUtil.setString( nIndex++, bPBot.getName( ) );
             daoUtil.setString( nIndex++, bPBot.getDescription( ) );
             daoUtil.setString( nIndex++, bPBot.getAvatarUrl( ) );
@@ -107,6 +107,7 @@ public final class BPBotDAO implements IBPBotDAO
 
             bPBot.setId( daoUtil.getInt( nIndex++ ) );
             bPBot.setBotKey( daoUtil.getString( nIndex++ ) );
+            bPBot.setBotPressKey( daoUtil.getString( nIndex++ ) );
             bPBot.setName( daoUtil.getString( nIndex++ ) );
             bPBot.setDescription( daoUtil.getString( nIndex++ ) );
             bPBot.setAvatarUrl( daoUtil.getString( nIndex++ ) );
@@ -146,6 +147,7 @@ public final class BPBotDAO implements IBPBotDAO
 
         daoUtil.setInt( nIndex++, bPBot.getId( ) );
         daoUtil.setString( nIndex++, bPBot.getBotKey( ) );
+        daoUtil.setString( nIndex++, bPBot.getBotPressKey( ) );
         daoUtil.setString( nIndex++, bPBot.getName( ) );
         daoUtil.setString( nIndex++, bPBot.getDescription( ) );
         daoUtil.setString( nIndex++, bPBot.getAvatarUrl( ) );
@@ -179,6 +181,7 @@ public final class BPBotDAO implements IBPBotDAO
 
             bPBot.setId( daoUtil.getInt( nIndex++ ) );
             bPBot.setBotKey( daoUtil.getString( nIndex++ ) );
+            bPBot.setBotPressKey( daoUtil.getString( nIndex++ ) );
             bPBot.setName( daoUtil.getString( nIndex++ ) );
             bPBot.setDescription( daoUtil.getString( nIndex++ ) );
             bPBot.setAvatarUrl( daoUtil.getString( nIndex++ ) );
@@ -191,25 +194,6 @@ public final class BPBotDAO implements IBPBotDAO
             bPBot.setApiVersion( daoUtil.getInt( nIndex++ ) );
 
             bPBotList.add( bPBot );
-        }
-
-        daoUtil.free( );
-        return bPBotList;
-    }
-
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public List<Integer> selectIdBPBotsList( Plugin plugin )
-    {
-        List<Integer> bPBotList = new ArrayList<Integer>( );
-        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL_ID, plugin );
-        daoUtil.executeQuery( );
-
-        while ( daoUtil.next( ) )
-        {
-            bPBotList.add( daoUtil.getInt( 1 ) );
         }
 
         daoUtil.free( );
