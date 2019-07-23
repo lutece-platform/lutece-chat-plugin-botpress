@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.botpress.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import fr.paris.lutece.plugins.botpress.business.RequestMessage;
 import fr.paris.lutece.plugins.chatbot.business.BotPost;
 import fr.paris.lutece.portal.service.util.AppLogService;
@@ -75,11 +74,13 @@ public class ConverseService
      *            The conversation ID (or UserID)
      * @param strBotApiEntryPointUrl
      *            The URL of the Bot API
+     * @param strErrorMessage
+     *            Error message sent by the bot if the connection fails
      * @param locale
      *            The locale The locale
      * @return A list of bot responses
      */
-    public static List<BotPost> getBotResponse( String strMessage, String strConversationId, String strBotApiEntryPointUrl, Locale locale )
+    public static List<BotPost> getBotResponse( String strMessage, String strConversationId, String strBotApiEntryPointUrl, String strErrorMessage, Locale locale )
     {
         List<BotPost> listPosts = new ArrayList<>( );
         RequestMessage message = new RequestMessage( strMessage );
@@ -113,6 +114,9 @@ public class ConverseService
             }
             AppLogService.error( sbError.toString( ), ex );
 
+            BotPost post = new BotPost( strErrorMessage );
+            listPosts.add( post );
+            
             return listPosts;
         }
 

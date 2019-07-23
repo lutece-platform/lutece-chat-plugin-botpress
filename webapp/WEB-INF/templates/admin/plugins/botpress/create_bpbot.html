@@ -42,6 +42,9 @@
 				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelWelcomeMessage}' helpKey='#i18n{botpress.create_bpbot.labelWelcomeMessage.help}' >
 					<@input type='text' name='welcome_message' value='${bpbot.welcomeMessage!\'\'}' />
 				</@formGroup>
+				<@formGroup labelKey='#i18n{botpress.create_bpbot.labelErrorMessage}' helpKey='#i18n{botpress.create_bpbot.labelErrorMessage.help}' >
+					<@input type='text' name='error_message' value='${bpbot.errorMessage!\'\'}' />
+				</@formGroup>
 				
 				<@actionButtons button1Name="action_createBPBot" button2Name="view_manageBPBot"/>
     </@tform>

@@ -48,6 +48,7 @@ public final class BotInstance extends AbstractChatBot
     // Variables declarations
 
     private String _strBotApiEntryPointUrl;
+    private String _strErrorMessage;
 
     /**
      * Constructor
@@ -66,6 +67,7 @@ public final class BotInstance extends AbstractChatBot
         setWelcomeMessage( bot.getWelcomeMessage( ) );
         setAvatarRendererKey( bot.getAvatarRendererKey() );
         _strBotApiEntryPointUrl = ConverseService.getBotApiEntryPointUrl( bot.getBotPressKey( ), bot.getServerUrl( ), bot.getApiVersion( ) );
+        _strErrorMessage = bot.getErrorMessage();
 
     }
 
@@ -96,7 +98,7 @@ public final class BotInstance extends AbstractChatBot
     @Override
     public List<BotPost> processUserMessage( String strMessage, String strConversationId, Locale locale )
     {
-        return ConverseService.getBotResponse( strMessage, strConversationId, _strBotApiEntryPointUrl, locale );
+        return ConverseService.getBotResponse( strMessage, strConversationId, _strBotApiEntryPointUrl, _strErrorMessage, locale );
     }
 
     /**

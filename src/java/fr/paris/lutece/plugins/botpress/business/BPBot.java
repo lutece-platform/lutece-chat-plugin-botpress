@@ -80,6 +80,9 @@ public class BPBot implements Serializable
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.WelcomeMessage.size}" )
     private String _strWelcomeMessage;
 
+    @Size( max = 255, message = "#i18n{botpress.validation.bpbot.ErrorMessage.size}" )
+    private String _strErrorMessage;
+
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.ServerUrl.notEmpty}" )
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.ServerUrl.size}" )
     private String _strServerUrl;
@@ -296,6 +299,27 @@ public class BPBot implements Serializable
     public void setWelcomeMessage( String strWelcomeMessage )
     {
         _strWelcomeMessage = strWelcomeMessage;
+    }
+
+    /**
+     * Returns the ErrorMessage
+     * 
+     * @return The ErrorMessage
+     */
+    public String getErrorMessage( )
+    {
+        return _strErrorMessage;
+    }
+
+    /**
+     * Sets the ErrorMessage
+     * 
+     * @param strErrorMessage
+     *            The ErrorMessage
+     */
+    public void setErrorMessage( String strErrorMessage )
+    {
+        _strErrorMessage = strErrorMessage;
     }
 
     /**
