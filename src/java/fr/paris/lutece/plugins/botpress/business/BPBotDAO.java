@@ -31,16 +31,17 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.botpress.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.util.ReferenceList;
 import fr.paris.lutece.util.sql.DAOUtil;
+
 import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * This class provides Data Access methods for BPBot objects
@@ -61,32 +62,34 @@ public final class BPBotDAO implements IBPBotDAO
     public void insert( BPBot bPBot, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT, Statement.RETURN_GENERATED_KEYS, plugin );
+
         try
         {
             int nIndex = 1;
-            daoUtil.setString( nIndex++, bPBot.getBotKey( ) );
-            daoUtil.setString( nIndex++, bPBot.getBotPressKey( ) );
-            daoUtil.setString( nIndex++, bPBot.getName( ) );
-            daoUtil.setString( nIndex++, bPBot.getDescription( ) );
-            daoUtil.setString( nIndex++, bPBot.getAvatarUrl( ) );
-            daoUtil.setString( nIndex++, bPBot.getAvatarRendererKey() );
-            daoUtil.setString( nIndex++, bPBot.getLanguage( ) );
-            daoUtil.setInt( nIndex++, bPBot.getBotStatus( ) );
-            daoUtil.setInt( nIndex++, bPBot.getIsStandalone( ) );
-            daoUtil.setString( nIndex++, bPBot.getWelcomeMessage( ) );
-            daoUtil.setString( nIndex++, bPBot.getErrorMessage( ) );
-            daoUtil.setString( nIndex++, bPBot.getServerUrl( ) );
-            daoUtil.setInt( nIndex++, bPBot.getApiVersion( ) );
+            daoUtil.setString( nIndex++, bPBot.getBotKey(  ) );
+            daoUtil.setString( nIndex++, bPBot.getBotPressKey(  ) );
+            daoUtil.setString( nIndex++, bPBot.getName(  ) );
+            daoUtil.setString( nIndex++, bPBot.getDescription(  ) );
+            daoUtil.setString( nIndex++, bPBot.getAvatarUrl(  ) );
+            daoUtil.setString( nIndex++, bPBot.getAvatarRendererKey(  ) );
+            daoUtil.setString( nIndex++, bPBot.getLanguage(  ) );
+            daoUtil.setInt( nIndex++, bPBot.getBotStatus(  ) );
+            daoUtil.setInt( nIndex++, bPBot.getIsStandalone(  ) );
+            daoUtil.setString( nIndex++, bPBot.getWelcomeMessage(  ) );
+            daoUtil.setString( nIndex++, bPBot.getErrorMessage(  ) );
+            daoUtil.setString( nIndex++, bPBot.getServerUrl(  ) );
+            daoUtil.setInt( nIndex++, bPBot.getApiVersion(  ) );
 
-            daoUtil.executeUpdate( );
-            if ( daoUtil.nextGeneratedKey( ) )
+            daoUtil.executeUpdate(  );
+
+            if ( daoUtil.nextGeneratedKey(  ) )
             {
                 bPBot.setId( daoUtil.getGeneratedKeyInt( 1 ) );
             }
         }
         finally
         {
-            daoUtil.free( );
+            daoUtil.free(  );
         }
     }
 
@@ -98,12 +101,14 @@ public final class BPBotDAO implements IBPBotDAO
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT, plugin );
         daoUtil.setInt( 1, nKey );
-        daoUtil.executeQuery( );
+        daoUtil.executeQuery(  );
+
         BPBot bPBot = null;
 
-        if ( daoUtil.next( ) )
+        if ( daoUtil.next(  ) )
         {
-            bPBot = new BPBot( );
+            bPBot = new BPBot(  );
+
             int nIndex = 1;
 
             bPBot.setId( daoUtil.getInt( nIndex++ ) );
@@ -112,7 +117,7 @@ public final class BPBotDAO implements IBPBotDAO
             bPBot.setName( daoUtil.getString( nIndex++ ) );
             bPBot.setDescription( daoUtil.getString( nIndex++ ) );
             bPBot.setAvatarUrl( daoUtil.getString( nIndex++ ) );
-            bPBot.setAvatarRendererKey(daoUtil.getString( nIndex++ ) );
+            bPBot.setAvatarRendererKey( daoUtil.getString( nIndex++ ) );
             bPBot.setLanguage( daoUtil.getString( nIndex++ ) );
             bPBot.setBotStatus( daoUtil.getInt( nIndex++ ) );
             bPBot.setIsStandalone( daoUtil.getInt( nIndex++ ) );
@@ -122,7 +127,8 @@ public final class BPBotDAO implements IBPBotDAO
             bPBot.setApiVersion( daoUtil.getInt( nIndex++ ) );
         }
 
-        daoUtil.free( );
+        daoUtil.free(  );
+
         return bPBot;
     }
 
@@ -134,8 +140,8 @@ public final class BPBotDAO implements IBPBotDAO
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
         daoUtil.setInt( 1, nKey );
-        daoUtil.executeUpdate( );
-        daoUtil.free( );
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
     }
 
     /**
@@ -147,24 +153,24 @@ public final class BPBotDAO implements IBPBotDAO
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
         int nIndex = 1;
 
-        daoUtil.setInt( nIndex++, bPBot.getId( ) );
-        daoUtil.setString( nIndex++, bPBot.getBotKey( ) );
-        daoUtil.setString( nIndex++, bPBot.getBotPressKey( ) );
-        daoUtil.setString( nIndex++, bPBot.getName( ) );
-        daoUtil.setString( nIndex++, bPBot.getDescription( ) );
-        daoUtil.setString( nIndex++, bPBot.getAvatarUrl( ) );
-        daoUtil.setString( nIndex++, bPBot.getAvatarRendererKey( ) );
-        daoUtil.setString( nIndex++, bPBot.getLanguage( ) );
-        daoUtil.setInt( nIndex++, bPBot.getBotStatus( ) );
-        daoUtil.setInt( nIndex++, bPBot.getIsStandalone( ) );
-        daoUtil.setString( nIndex++, bPBot.getWelcomeMessage( ) );
-        daoUtil.setString( nIndex++, bPBot.getErrorMessage( ) );
-        daoUtil.setString( nIndex++, bPBot.getServerUrl( ) );
-        daoUtil.setInt( nIndex++, bPBot.getApiVersion( ) );
-        daoUtil.setInt( nIndex, bPBot.getId( ) );
+        daoUtil.setInt( nIndex++, bPBot.getId(  ) );
+        daoUtil.setString( nIndex++, bPBot.getBotKey(  ) );
+        daoUtil.setString( nIndex++, bPBot.getBotPressKey(  ) );
+        daoUtil.setString( nIndex++, bPBot.getName(  ) );
+        daoUtil.setString( nIndex++, bPBot.getDescription(  ) );
+        daoUtil.setString( nIndex++, bPBot.getAvatarUrl(  ) );
+        daoUtil.setString( nIndex++, bPBot.getAvatarRendererKey(  ) );
+        daoUtil.setString( nIndex++, bPBot.getLanguage(  ) );
+        daoUtil.setInt( nIndex++, bPBot.getBotStatus(  ) );
+        daoUtil.setInt( nIndex++, bPBot.getIsStandalone(  ) );
+        daoUtil.setString( nIndex++, bPBot.getWelcomeMessage(  ) );
+        daoUtil.setString( nIndex++, bPBot.getErrorMessage(  ) );
+        daoUtil.setString( nIndex++, bPBot.getServerUrl(  ) );
+        daoUtil.setInt( nIndex++, bPBot.getApiVersion(  ) );
+        daoUtil.setInt( nIndex, bPBot.getId(  ) );
 
-        daoUtil.executeUpdate( );
-        daoUtil.free( );
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
     }
 
     /**
@@ -173,13 +179,13 @@ public final class BPBotDAO implements IBPBotDAO
     @Override
     public List<BPBot> selectBPBotsList( Plugin plugin )
     {
-        List<BPBot> bPBotList = new ArrayList<BPBot>( );
+        List<BPBot> bPBotList = new ArrayList<BPBot>(  );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
-        daoUtil.executeQuery( );
+        daoUtil.executeQuery(  );
 
-        while ( daoUtil.next( ) )
+        while ( daoUtil.next(  ) )
         {
-            BPBot bPBot = new BPBot( );
+            BPBot bPBot = new BPBot(  );
             int nIndex = 1;
 
             bPBot.setId( daoUtil.getInt( nIndex++ ) );
@@ -200,7 +206,8 @@ public final class BPBotDAO implements IBPBotDAO
             bPBotList.add( bPBot );
         }
 
-        daoUtil.free( );
+        daoUtil.free(  );
+
         return bPBotList;
     }
 
@@ -210,16 +217,17 @@ public final class BPBotDAO implements IBPBotDAO
     @Override
     public ReferenceList selectBPBotsReferenceList( Plugin plugin )
     {
-        ReferenceList bPBotList = new ReferenceList( );
+        ReferenceList bPBotList = new ReferenceList(  );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
-        daoUtil.executeQuery( );
+        daoUtil.executeQuery(  );
 
-        while ( daoUtil.next( ) )
+        while ( daoUtil.next(  ) )
         {
             bPBotList.addItem( daoUtil.getInt( 1 ), daoUtil.getString( 2 ) );
         }
 
-        daoUtil.free( );
+        daoUtil.free(  );
+
         return bPBotList;
     }
 }

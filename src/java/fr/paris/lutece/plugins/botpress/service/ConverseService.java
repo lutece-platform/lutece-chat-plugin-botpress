@@ -53,7 +53,7 @@ import org.apache.log4j.Logger;
 /**
  * ConverseService
  */
-public class ConverseService
+public final class ConverseService
 {
 
     private static final String CONTENT_TYPE = "Content-Type";
@@ -65,6 +65,11 @@ public class ConverseService
     private static final Logger LOGGER = Logger.getLogger( LOGGER_NAME );
     private static ObjectMapper _objectMapper = new ObjectMapper( );
 
+    /** Private constructor */
+    private ConverseService()
+    {
+    }
+    
     /**
      * Get responses from the bot
      * 
@@ -97,13 +102,17 @@ public class ConverseService
             String strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
             Object jsonResponse = _objectMapper.readTree( strJsonResponse );
             strJsonResponsePretty = _objectMapper.writerWithDefaultPrettyPrinter( ).writeValueAsString( jsonResponse );
-            LOGGER.debug( "Message : " + strMessage + "\nResponse : \n" + strJsonResponsePretty );
+            if( LOGGER.isDebugEnabled() )
+            {
+                LOGGER.debug( "Message : " + strMessage + "\nResponse : \n" + strJsonResponsePretty );
+            }
             parseJsonResponse( strJsonResponse, listPosts );
             return listPosts;
         }
         catch( HttpAccessException | IOException ex )
         {
-            StringBuilder sbError = new StringBuilder( "Error getting response from Botpress API : " + ex.getMessage( ) );
+            StringBuilder sbError = new StringBuilder();
+            sbError.append( "Error getting response from Botpress API : " ).append(  ex.getMessage( ) );
             if ( strUrl != null )
             {
                 sbError.append( "\n - POST URL : " ).append( strUrl );

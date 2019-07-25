@@ -33,9 +33,12 @@
  */
 package fr.paris.lutece.plugins.botpress.business;
 
-import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
+
+import javax.validation.constraints.Size;
+
 
 /**
  * This is the business class for the object BPBot
@@ -43,67 +46,53 @@ import java.io.Serializable;
 public class BPBot implements Serializable
 {
     private static final String DEFAULT_AVATAR_URL = "images/skin/plugins/botpress/default_avatar.png";
-
     private static final long serialVersionUID = 1L;
 
     // Variables declarations
     private int _nId;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.BotKey.notEmpty}" )
     @Size( max = 50, message = "#i18n{botpress.validation.bpbot.BotKey.size}" )
     private String _strBotKey;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.BotPressKey.notEmpty}" )
     @Size( max = 50, message = "#i18n{botpress.validation.bpbot.BotPressKey.size}" )
     private String _strBotPressKey;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.Name.notEmpty}" )
     @Size( max = 50, message = "#i18n{botpress.validation.bpbot.Name.size}" )
     private String _strName;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.Description.notEmpty}" )
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.Description.size}" )
     private String _strDescription;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.AvatarUrl.notEmpty}" )
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.AvatarUrl.size}" )
     private String _strAvatarUrl = DEFAULT_AVATAR_URL;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.Language.notEmpty}" )
     @Size( max = 50, message = "#i18n{botpress.validation.bpbot.Language.size}" )
     private String _strLanguage;
-
     private int _nBotStatus;
-
     private int _nIsStandalone;
-
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.WelcomeMessage.size}" )
     private String _strWelcomeMessage;
-
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.ErrorMessage.size}" )
     private String _strErrorMessage;
-
     @NotEmpty( message = "#i18n{botpress.validation.bpbot.ServerUrl.notEmpty}" )
     @Size( max = 255, message = "#i18n{botpress.validation.bpbot.ServerUrl.size}" )
     private String _strServerUrl;
-
     private int _nApiVersion;
-    
     private String _strAvatarRendererKey;
 
     /**
      * Returns the Id
-     * 
+     *
      * @return The Id
      */
-    public int getId( )
+    public int getId(  )
     {
         return _nId;
     }
 
     /**
      * Sets the Id
-     * 
+     *
      * @param nId
      *            The Id
      */
@@ -114,17 +103,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the BotKey
-     * 
+     *
      * @return The BotKey
      */
-    public String getBotKey( )
+    public String getBotKey(  )
     {
         return _strBotKey;
     }
 
     /**
      * Sets the BotKey
-     * 
+     *
      * @param strBotKey
      *            The BotKey
      */
@@ -135,17 +124,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the BotPressKey
-     * 
+     *
      * @return The BotPressKey
      */
-    public String getBotPressKey( )
+    public String getBotPressKey(  )
     {
         return _strBotPressKey;
     }
 
     /**
      * Sets the BotPressKey
-     * 
+     *
      * @param strBotPressKey
      *            The BotPressKey
      */
@@ -156,17 +145,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the Name
-     * 
+     *
      * @return The Name
      */
-    public String getName( )
+    public String getName(  )
     {
         return _strName;
     }
 
     /**
      * Sets the Name
-     * 
+     *
      * @param strName
      *            The Name
      */
@@ -177,17 +166,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the Description
-     * 
+     *
      * @return The Description
      */
-    public String getDescription( )
+    public String getDescription(  )
     {
         return _strDescription;
     }
 
     /**
      * Sets the Description
-     * 
+     *
      * @param strDescription
      *            The Description
      */
@@ -198,17 +187,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the AvatarUrl
-     * 
+     *
      * @return The AvatarUrl
      */
-    public String getAvatarUrl( )
+    public String getAvatarUrl(  )
     {
         return _strAvatarUrl;
     }
 
     /**
      * Sets the AvatarUrl
-     * 
+     *
      * @param strAvatarUrl
      *            The AvatarUrl
      */
@@ -219,17 +208,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the Language
-     * 
+     *
      * @return The Language
      */
-    public String getLanguage( )
+    public String getLanguage(  )
     {
         return _strLanguage;
     }
 
     /**
      * Sets the Language
-     * 
+     *
      * @param strLanguage
      *            The Language
      */
@@ -240,17 +229,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the BotStatus
-     * 
+     *
      * @return The BotStatus
      */
-    public int getBotStatus( )
+    public int getBotStatus(  )
     {
         return _nBotStatus;
     }
 
     /**
      * Sets the BotStatus
-     * 
+     *
      * @param nBotStatus
      *            The BotStatus
      */
@@ -261,17 +250,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the IsStandalone
-     * 
+     *
      * @return The IsStandalone
      */
-    public int getIsStandalone( )
+    public int getIsStandalone(  )
     {
         return _nIsStandalone;
     }
 
     /**
      * Sets the IsStandalone
-     * 
+     *
      * @param nIsStandalone
      *            The IsStandalone
      */
@@ -282,17 +271,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the WelcomeMessage
-     * 
+     *
      * @return The WelcomeMessage
      */
-    public String getWelcomeMessage( )
+    public String getWelcomeMessage(  )
     {
         return _strWelcomeMessage;
     }
 
     /**
      * Sets the WelcomeMessage
-     * 
+     *
      * @param strWelcomeMessage
      *            The WelcomeMessage
      */
@@ -303,17 +292,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the ErrorMessage
-     * 
+     *
      * @return The ErrorMessage
      */
-    public String getErrorMessage( )
+    public String getErrorMessage(  )
     {
         return _strErrorMessage;
     }
 
     /**
      * Sets the ErrorMessage
-     * 
+     *
      * @param strErrorMessage
      *            The ErrorMessage
      */
@@ -324,17 +313,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the ServerUrl
-     * 
+     *
      * @return The ServerUrl
      */
-    public String getServerUrl( )
+    public String getServerUrl(  )
     {
         return _strServerUrl;
     }
 
     /**
      * Sets the ServerUrl
-     * 
+     *
      * @param strServerUrl
      *            The ServerUrl
      */
@@ -345,17 +334,17 @@ public class BPBot implements Serializable
 
     /**
      * Returns the ApiVersion
-     * 
+     *
      * @return The ApiVersion
      */
-    public int getApiVersion( )
+    public int getApiVersion(  )
     {
         return _nApiVersion;
     }
 
     /**
      * Sets the ApiVersion
-     * 
+     *
      * @param nApiVersion
      *            The ApiVersion
      */
@@ -363,21 +352,20 @@ public class BPBot implements Serializable
     {
         _nApiVersion = nApiVersion;
     }
-    
-    
+
     /**
      * Returns the AvatarRendererKey
-     * 
+     *
      * @return The AvatarRendererKey
      */
-    public String getAvatarRendererKey( )
+    public String getAvatarRendererKey(  )
     {
         return _strAvatarRendererKey;
     }
 
     /**
      * Sets the AvatarRendererKey
-     * 
+     *
      * @param strAvatarRendererKey
      *            The AvatarRendererKey
      */
@@ -385,8 +373,4 @@ public class BPBot implements Serializable
     {
         _strAvatarRendererKey = strAvatarRendererKey;
     }
-    
-    
-    
-    
 }

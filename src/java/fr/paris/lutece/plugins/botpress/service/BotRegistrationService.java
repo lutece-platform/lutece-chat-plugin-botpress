@@ -78,7 +78,7 @@ public class BotRegistrationService
      *            The locale
      * @return The list
      */
-    public static ReferenceList getBotsStatusList( Locale locale )
+    public static synchronized ReferenceList getBotsStatusList( Locale locale )
     {
         if ( _listStatus == null )
         {

@@ -37,9 +37,7 @@ package fr.paris.lutece.plugins.botpress.service.renderers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import fr.paris.lutece.plugins.botpress.service.BotMessageRenderer;
-import static fr.paris.lutece.plugins.botpress.service.BotMessageRenderer.FIELD_TEXT;
 import static fr.paris.lutece.plugins.botpress.service.BotMessageRenderer.FIELD_TYPE;
-import static fr.paris.lutece.plugins.botpress.service.BotMessageRenderer.TYPE_TEXT;
 import fr.paris.lutece.plugins.chatbot.business.Post;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.web.l10n.LocaleService;

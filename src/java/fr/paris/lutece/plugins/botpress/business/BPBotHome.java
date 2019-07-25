@@ -42,6 +42,7 @@ import fr.paris.lutece.util.ReferenceList;
 
 import java.util.List;
 
+
 /**
  * This class provides instances management methods (create, find, ...) for BPBot objects
  */
@@ -54,13 +55,13 @@ public final class BPBotHome
     /**
      * Private constructor - this class need not be instantiated
      */
-    private BPBotHome( )
+    private BPBotHome(  )
     {
     }
 
     /**
      * Create an instance of the bPBot class
-     * 
+     *
      * @param bot
      *            The instance of the BPBot which contains the informations to store
      * @return The instance of bPBot which has been created with its primary key.
@@ -68,14 +69,14 @@ public final class BPBotHome
     public static BPBot create( BPBot bot )
     {
         _dao.insert( bot, _plugin );
-        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus( ) );
+        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus(  ) );
 
         return bot;
     }
 
     /**
      * Update of the bPBot which is specified in parameter
-     * 
+     *
      * @param bot
      *            The instance of the BPBot which contains the data to store
      * @return The instance of the bPBot which has been updated
@@ -83,15 +84,15 @@ public final class BPBotHome
     public static BPBot update( BPBot bot )
     {
         _dao.store( bot, _plugin );
-        BotRegistrationService.unregister( bot.getBotKey( ) );
-        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus( ) );
+        BotRegistrationService.unregister( bot.getBotKey(  ) );
+        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus(  ) );
 
         return bot;
     }
 
     /**
      * Remove the bPBot whose identifier is specified in parameter
-     * 
+     *
      * @param nKey
      *            The bPBot Id
      */
@@ -102,7 +103,7 @@ public final class BPBotHome
 
     /**
      * Returns an instance of a bPBot whose identifier is specified in parameter
-     * 
+     *
      * @param nKey
      *            The bPBot primary key
      * @return an instance of BPBot
@@ -114,20 +115,20 @@ public final class BPBotHome
 
     /**
      * Load the data of all the bPBot objects and returns them as a list
-     * 
+     *
      * @return the list which contains the data of all the bPBot objects
      */
-    public static List<BPBot> getBPBotsList( )
+    public static List<BPBot> getBPBotsList(  )
     {
         return _dao.selectBPBotsList( _plugin );
     }
 
     /**
      * Load the data of all the bPBot objects and returns them as a referenceList
-     * 
+     *
      * @return the referenceList which contains the data of all the bPBot objects
      */
-    public static ReferenceList getBPBotsReferenceList( )
+    public static ReferenceList getBPBotsReferenceList(  )
     {
         return _dao.selectBPBotsReferenceList( _plugin );
     }

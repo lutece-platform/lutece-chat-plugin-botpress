@@ -56,6 +56,8 @@ public final class BotInstance extends AbstractChatBot
      */
     public BotInstance( BPBot bot )
     {
+        super();
+        
         setKey( bot.getBotKey( ) );
         setName( bot.getName( ) );
         setDescription( bot.getDescription( ) );

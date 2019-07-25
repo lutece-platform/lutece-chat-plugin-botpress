@@ -41,8 +41,13 @@ import java.util.List;
 /**
  * Renderer Service
  */
-public class RendererService
+public final class RendererService
 {
+    /** private constructor */
+    private RendererService()
+    {
+    }
+    
     /**
      * Give the good renderer to handle the response
      * 

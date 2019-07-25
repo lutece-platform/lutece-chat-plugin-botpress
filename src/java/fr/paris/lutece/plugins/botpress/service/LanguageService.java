@@ -43,12 +43,17 @@ import java.util.Map;
 /**
  * LanguageService
  */
-public class LanguageService
+public final class LanguageService
 {
     private static final String PROPERTY_LANGUAGES = "botpress.languages";
 
     private static Map<String, ReferenceList> _mapLanguages = new HashMap<>( );
 
+    /** private constructor */
+    private LanguageService()
+    {
+    }
+    
     /**
      * Gets a list of available languages
      * 
