@@ -31,52 +31,62 @@
  *
  * License 1.0
  */
+
 package fr.paris.lutece.plugins.botpress.service.renderers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import fr.paris.lutece.plugins.chatbot.business.Post;
+import java.util.List;
 import java.util.Map;
 
 /**
- * Text Renderer
+ * BotMessageRenderer
  */
-public class TextRenderer extends AbstractRenderer implements BotMessageRenderer
+public interface BotMessageRenderer
 {
+    static final String FIELD_TYPE = "type";
+    static final String TYPE_TEXT = "text";
+    static final String TYPE_FILE = "file";
+    static final String FIELD_TEXT = "text";
+    static final String FIELD_URL = "url";
 
     /**
-     * {@inheritDoc }
+     * Analyze the response node to tell if this renderer should be invoked
+     * 
+     * @param nodeResponse
+     *            The response node
+     * @return true if the renderer should handle the response format otherwise false
      */
-    @Override
-    public boolean isInvoked( JsonNode nodeResponse )
-    {
-        return ( nodeResponse.get( FIELD_TYPE ) != null ) && ( nodeResponse.get( FIELD_TYPE ).asText().equals( TYPE_TEXT ) );
-    }
+    boolean isInvoked( JsonNode nodeResponse );
 
     /**
-     * {@inheritDoc }
+     * Render a JSON response as HTML
+     * 
+     * @param map
+     *            The map corresponding to the JSON response
+     * @return The rendered HTML
      */
-    @Override
-    public String render( Map map )
-    {
-        String strOutput = (String) map.get( FIELD_TEXT );
-        if( getConverters() != null )
-        {
-            for( Converter converter : getConverters() )
-            {
-                strOutput = converter.convert( strOutput );
-            }
-        }
-        return strOutput;
-
-    }
+    String render( Map map );
 
     /**
-     * {@inheritDoc }
+     * Return the content type corresponding to this renderer
+     * 
+     * @return The content type
      */
-    @Override
-    public String getPostContentType()
-    {
-        return Post.CONTENT_TYPE_TEXT;
-    }
+    String getPostContentType( );
+
+    /**
+     * Define a list of converters used by the renderer
+     * 
+     * @param listConverters
+     *            The list of converters
+     */
+    void setConverters( List<Converter> listConverters );
+
+    /**
+     * Returns the list of converters
+     * 
+     * @return converters
+     */
+    List<Converter> getConverters( );
 
 }

@@ -6,8 +6,24 @@
 
     <bean id="botpress.bPBotDAO" class="fr.paris.lutece.plugins.botpress.business.BPBotDAO" />
 
+    <!-- Converters -->
+    <bean id="botpress.converterLink" class="fr.paris.lutece.plugins.botpress.service.renderers.LinkConverter" />
 
-    <bean id="botpress.rendererText" class="fr.paris.lutece.plugins.botpress.service.renderers.TextRenderer" />
+    
+    <bean id="botpress.list.convertersText" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="botpress.converterLink" />
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <!-- Renderers -->
+    <bean id="botpress.rendererText" class="fr.paris.lutece.plugins.botpress.service.renderers.TextRenderer" >
+        <property name="converters">
+            <ref bean="botpress.list.convertersText" />
+        </property>
+    </bean>
     <bean id="botpress.rendererQuickReplies" class="fr.paris.lutece.plugins.botpress.service.renderers.QuickRepliesRenderer" />
     <bean id="botpress.rendererFile" class="fr.paris.lutece.plugins.botpress.service.renderers.FileRenderer" />
     

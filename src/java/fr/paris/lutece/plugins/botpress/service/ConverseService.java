@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.botpress.service;
 
+import fr.paris.lutece.plugins.botpress.service.renderers.BotMessageRenderer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.paris.lutece.plugins.botpress.business.RequestMessage;
@@ -66,10 +67,10 @@ public final class ConverseService
     private static ObjectMapper _objectMapper = new ObjectMapper( );
 
     /** Private constructor */
-    private ConverseService()
+    private ConverseService( )
     {
     }
-    
+
     /**
      * Get responses from the bot
      * 
@@ -85,7 +86,8 @@ public final class ConverseService
      *            The locale The locale
      * @return A list of bot responses
      */
-    public static List<BotPost> getBotResponse( String strMessage, String strConversationId, String strBotApiEntryPointUrl, String strErrorMessage, Locale locale )
+    public static List<BotPost> getBotResponse( String strMessage, String strConversationId, String strBotApiEntryPointUrl, String strErrorMessage,
+            Locale locale )
     {
         List<BotPost> listPosts = new ArrayList<>( );
         RequestMessage message = new RequestMessage( strMessage );
@@ -102,7 +104,7 @@ public final class ConverseService
             String strJsonResponse = client.doPostJSON( strUrl, strJsonMessage, mapRequestHeaders, mapResponseHeaders );
             Object jsonResponse = _objectMapper.readTree( strJsonResponse );
             strJsonResponsePretty = _objectMapper.writerWithDefaultPrettyPrinter( ).writeValueAsString( jsonResponse );
-            if( LOGGER.isDebugEnabled() )
+            if ( LOGGER.isDebugEnabled( ) )
             {
                 LOGGER.debug( "Message : " + strMessage + "\nResponse : \n" + strJsonResponsePretty );
             }
@@ -111,8 +113,8 @@ public final class ConverseService
         }
         catch( HttpAccessException | IOException ex )
         {
-            StringBuilder sbError = new StringBuilder();
-            sbError.append( "Error getting response from Botpress API : " ).append(  ex.getMessage( ) );
+            StringBuilder sbError = new StringBuilder( );
+            sbError.append( "Error getting response from Botpress API : " ).append( ex.getMessage( ) );
             if ( strUrl != null )
             {
                 sbError.append( "\n - POST URL : " ).append( strUrl );
@@ -125,7 +127,7 @@ public final class ConverseService
 
             BotPost post = new BotPost( strErrorMessage );
             listPosts.add( post );
-            
+
             return listPosts;
         }
 
@@ -152,7 +154,7 @@ public final class ConverseService
             BotMessageRenderer renderer = RendererService.getRenderer( response );
             if ( renderer != null )
             {
-                BotPost post = new BotPost( renderer.render( _objectMapper.convertValue( response, Map.class ) ) , renderer.getPostContentType() );
+                BotPost post = new BotPost( renderer.render( _objectMapper.convertValue( response, Map.class ) ), renderer.getPostContentType( ) );
                 listPosts.add( post );
             }
         }

@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.botpress.business;
 
-
 /*
  * Copyright (c) 2002-2019, Mairie de Paris
  * All rights reserved.
@@ -90,7 +89,7 @@ public class RequestMessage
      *
      * @return The Type
      */
-    public String getType(  )
+    public String getType( )
     {
         return _strType;
     }
@@ -111,7 +110,7 @@ public class RequestMessage
      *
      * @return The Text
      */
-    public String getText(  )
+    public String getText( )
     {
         return _strText;
     }

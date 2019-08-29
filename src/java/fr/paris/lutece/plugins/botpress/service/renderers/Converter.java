@@ -31,52 +31,21 @@
  *
  * License 1.0
  */
+
 package fr.paris.lutece.plugins.botpress.service.renderers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import fr.paris.lutece.plugins.chatbot.business.Post;
-import java.util.Map;
-
 /**
- * Text Renderer
+ * Converter
  */
-public class TextRenderer extends AbstractRenderer implements BotMessageRenderer
+public interface Converter
 {
-
     /**
-     * {@inheritDoc }
+     * Convert a String
+     * 
+     * @param strInput
+     *            The input
+     * @return The output
      */
-    @Override
-    public boolean isInvoked( JsonNode nodeResponse )
-    {
-        return ( nodeResponse.get( FIELD_TYPE ) != null ) && ( nodeResponse.get( FIELD_TYPE ).asText().equals( TYPE_TEXT ) );
-    }
-
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public String render( Map map )
-    {
-        String strOutput = (String) map.get( FIELD_TEXT );
-        if( getConverters() != null )
-        {
-            for( Converter converter : getConverters() )
-            {
-                strOutput = converter.convert( strOutput );
-            }
-        }
-        return strOutput;
-
-    }
-
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public String getPostContentType()
-    {
-        return Post.CONTENT_TYPE_TEXT;
-    }
+    String convert( String strInput );
 
 }

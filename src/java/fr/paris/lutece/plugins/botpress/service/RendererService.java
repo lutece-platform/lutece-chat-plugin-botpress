@@ -34,6 +34,7 @@
 
 package fr.paris.lutece.plugins.botpress.service;
 
+import fr.paris.lutece.plugins.botpress.service.renderers.BotMessageRenderer;
 import com.fasterxml.jackson.databind.JsonNode;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 import java.util.List;
@@ -44,10 +45,10 @@ import java.util.List;
 public final class RendererService
 {
     /** private constructor */
-    private RendererService()
+    private RendererService( )
     {
     }
-    
+
     /**
      * Give the good renderer to handle the response
      * 

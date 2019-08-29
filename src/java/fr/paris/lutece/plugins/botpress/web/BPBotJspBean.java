@@ -192,7 +192,7 @@ public class BPBotJspBean extends MVCAdminJspBean
         model.put( MARK_LANGUAGES_LIST, LanguageService.getLanguages( getLocale( ) ) );
         model.put( MARK_MODES_LIST, BotRegistrationService.getModes( getLocale( ) ) );
         model.put( MARK_VERSIONS_LIST, ConverseService.getApiVersions( ) );
-        model.put( MARK_AVATAR_RENDERERS, AvatarRendererService.getAvatarRenderersList() );
+        model.put( MARK_AVATAR_RENDERERS, AvatarRendererService.getAvatarRenderersList( ) );
 
         return getPage( PROPERTY_PAGE_TITLE_CREATE_BPBOT, TEMPLATE_CREATE_BPBOT, model );
     }
@@ -215,7 +215,7 @@ public class BPBotJspBean extends MVCAdminJspBean
             return redirectView( request, VIEW_CREATE_BPBOT );
         }
 
-        try 
+        try
         {
             BPBotHome.create( _bpbot );
         }
@@ -288,7 +288,7 @@ public class BPBotJspBean extends MVCAdminJspBean
         model.put( MARK_LANGUAGES_LIST, LanguageService.getLanguages( getLocale( ) ) );
         model.put( MARK_MODES_LIST, BotRegistrationService.getModes( getLocale( ) ) );
         model.put( MARK_VERSIONS_LIST, ConverseService.getApiVersions( ) );
-        model.put( MARK_AVATAR_RENDERERS, AvatarRendererService.getAvatarRenderersList() );
+        model.put( MARK_AVATAR_RENDERERS, AvatarRendererService.getAvatarRenderersList( ) );
 
         return getPage( PROPERTY_PAGE_TITLE_MODIFY_BPBOT, TEMPLATE_MODIFY_BPBOT, model );
     }

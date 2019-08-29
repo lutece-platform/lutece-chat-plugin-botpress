@@ -50,10 +50,10 @@ public final class LanguageService
     private static Map<String, ReferenceList> _mapLanguages = new HashMap<>( );
 
     /** private constructor */
-    private LanguageService()
+    private LanguageService( )
     {
     }
-    
+
     /**
      * Gets a list of available languages
      * 

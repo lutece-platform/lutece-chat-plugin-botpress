@@ -42,7 +42,6 @@ import fr.paris.lutece.util.ReferenceList;
 
 import java.util.List;
 
-
 /**
  * This class provides instances management methods (create, find, ...) for BPBot objects
  */
@@ -55,7 +54,7 @@ public final class BPBotHome
     /**
      * Private constructor - this class need not be instantiated
      */
-    private BPBotHome(  )
+    private BPBotHome( )
     {
     }
 
@@ -69,7 +68,7 @@ public final class BPBotHome
     public static BPBot create( BPBot bot )
     {
         _dao.insert( bot, _plugin );
-        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus(  ) );
+        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus( ) );
 
         return bot;
     }
@@ -84,8 +83,8 @@ public final class BPBotHome
     public static BPBot update( BPBot bot )
     {
         _dao.store( bot, _plugin );
-        BotRegistrationService.unregister( bot.getBotKey(  ) );
-        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus(  ) );
+        BotRegistrationService.unregister( bot.getBotKey( ) );
+        BotRegistrationService.register( new BotInstance( bot ), bot.getBotStatus( ) );
 
         return bot;
     }
@@ -118,7 +117,7 @@ public final class BPBotHome
      *
      * @return the list which contains the data of all the bPBot objects
      */
-    public static List<BPBot> getBPBotsList(  )
+    public static List<BPBot> getBPBotsList( )
     {
         return _dao.selectBPBotsList( _plugin );
     }
@@ -128,7 +127,7 @@ public final class BPBotHome
      *
      * @return the referenceList which contains the data of all the bPBot objects
      */
-    public static ReferenceList getBPBotsReferenceList(  )
+    public static ReferenceList getBPBotsReferenceList( )
     {
         return _dao.selectBPBotsReferenceList( _plugin );
     }

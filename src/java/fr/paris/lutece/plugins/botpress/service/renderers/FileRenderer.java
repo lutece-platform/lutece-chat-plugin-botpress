@@ -32,12 +32,10 @@
  * License 1.0
  */
 
-
 package fr.paris.lutece.plugins.botpress.service.renderers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import fr.paris.lutece.plugins.botpress.service.BotMessageRenderer;
-import static fr.paris.lutece.plugins.botpress.service.BotMessageRenderer.FIELD_TYPE;
+import static fr.paris.lutece.plugins.botpress.service.renderers.BotMessageRenderer.FIELD_TYPE;
 import fr.paris.lutece.plugins.chatbot.business.Post;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.web.l10n.LocaleService;
@@ -48,7 +46,7 @@ import java.util.Map;
 /**
  * FileRenderer
  */
-public class FileRenderer implements BotMessageRenderer
+public class FileRenderer extends AbstractRenderer implements BotMessageRenderer
 {
     private static final String TEMPLATE_IMAGE = "/admin/plugins/botpress/renderers/image.html";
     private static final String MARK_URL = "url";
@@ -74,7 +72,7 @@ public class FileRenderer implements BotMessageRenderer
     public String render( Map map )
     {
         String strUrl = (String) map.get( FIELD_URL );
-        if( strUrl.endsWith( EXT_JPG ) || strUrl.endsWith( EXT_JPEG ) || strUrl.endsWith( EXT_PNG ) || strUrl.endsWith( EXT_GIF ))
+        if ( strUrl.endsWith( EXT_JPG ) || strUrl.endsWith( EXT_JPEG ) || strUrl.endsWith( EXT_PNG ) || strUrl.endsWith( EXT_GIF ) )
         {
             Map<String, Object> model = new HashMap<>( );
             model.put( MARK_URL, strUrl );
@@ -89,10 +87,9 @@ public class FileRenderer implements BotMessageRenderer
      * {@inheritDoc }
      */
     @Override
-    public String getPostContentType()
+    public String getPostContentType( )
     {
         return Post.CONTENT_TYPE_IMAGE;
     }
-    
-    
+
 }

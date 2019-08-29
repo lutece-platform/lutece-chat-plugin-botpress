@@ -32,44 +32,33 @@
  * License 1.0
  */
 
-package fr.paris.lutece.plugins.botpress.service;
+package fr.paris.lutece.plugins.botpress.service.renderers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import java.util.Map;
+import java.util.List;
 
 /**
- * BotMessageRenderer
+ * AbstractRenderer
  */
-public interface BotMessageRenderer
+public abstract class AbstractRenderer implements BotMessageRenderer
 {
-    static final String FIELD_TYPE = "type";
-    static final String TYPE_TEXT = "text";
-    static final String TYPE_FILE = "file";
-    static final String FIELD_TEXT = "text";
-    static final String FIELD_URL = "url";
+    private List<Converter> _listConverter;
 
     /**
-     * Analyze the response node to tell if this renderer should be invoked
-     * 
-     * @param nodeResponse
-     *            The response node
-     * @return true if the renderer should handle the response format otherwise false
+     * {@inheritDoc }
      */
-    boolean isInvoked( JsonNode nodeResponse );
+    @Override
+    public void setConverters( List<Converter> listConverter )
+    {
+        _listConverter = listConverter;
+    }
 
     /**
-     * Render a JSON response as HTML
-     * 
-     * @param map
-     *            The map corresponding to the JSON response
-     * @return The rendered HTML
+     * {@inheritDoc }
      */
-    String render( Map map );
-    
-    /**
-     * Return the content type corresponding to this renderer
-     * @return The content type
-     */
-    String getPostContentType();
-    
+    @Override
+    public List<Converter> getConverters( )
+    {
+        return _listConverter;
+    }
+
 }

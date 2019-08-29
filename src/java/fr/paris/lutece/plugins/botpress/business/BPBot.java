@@ -39,7 +39,6 @@ import java.io.Serializable;
 
 import javax.validation.constraints.Size;
 
-
 /**
  * This is the business class for the object BPBot
  */
@@ -85,7 +84,7 @@ public class BPBot implements Serializable
      *
      * @return The Id
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
@@ -106,7 +105,7 @@ public class BPBot implements Serializable
      *
      * @return The BotKey
      */
-    public String getBotKey(  )
+    public String getBotKey( )
     {
         return _strBotKey;
     }
@@ -127,7 +126,7 @@ public class BPBot implements Serializable
      *
      * @return The BotPressKey
      */
-    public String getBotPressKey(  )
+    public String getBotPressKey( )
     {
         return _strBotPressKey;
     }
@@ -148,7 +147,7 @@ public class BPBot implements Serializable
      *
      * @return The Name
      */
-    public String getName(  )
+    public String getName( )
     {
         return _strName;
     }
@@ -169,7 +168,7 @@ public class BPBot implements Serializable
      *
      * @return The Description
      */
-    public String getDescription(  )
+    public String getDescription( )
     {
         return _strDescription;
     }
@@ -190,7 +189,7 @@ public class BPBot implements Serializable
      *
      * @return The AvatarUrl
      */
-    public String getAvatarUrl(  )
+    public String getAvatarUrl( )
     {
         return _strAvatarUrl;
     }
@@ -211,7 +210,7 @@ public class BPBot implements Serializable
      *
      * @return The Language
      */
-    public String getLanguage(  )
+    public String getLanguage( )
     {
         return _strLanguage;
     }
@@ -232,7 +231,7 @@ public class BPBot implements Serializable
      *
      * @return The BotStatus
      */
-    public int getBotStatus(  )
+    public int getBotStatus( )
     {
         return _nBotStatus;
     }
@@ -253,7 +252,7 @@ public class BPBot implements Serializable
      *
      * @return The IsStandalone
      */
-    public int getIsStandalone(  )
+    public int getIsStandalone( )
     {
         return _nIsStandalone;
     }
@@ -274,7 +273,7 @@ public class BPBot implements Serializable
      *
      * @return The WelcomeMessage
      */
-    public String getWelcomeMessage(  )
+    public String getWelcomeMessage( )
     {
         return _strWelcomeMessage;
     }
@@ -295,7 +294,7 @@ public class BPBot implements Serializable
      *
      * @return The ErrorMessage
      */
-    public String getErrorMessage(  )
+    public String getErrorMessage( )
     {
         return _strErrorMessage;
     }
@@ -316,7 +315,7 @@ public class BPBot implements Serializable
      *
      * @return The ServerUrl
      */
-    public String getServerUrl(  )
+    public String getServerUrl( )
     {
         return _strServerUrl;
     }
@@ -337,7 +336,7 @@ public class BPBot implements Serializable
      *
      * @return The ApiVersion
      */
-    public int getApiVersion(  )
+    public int getApiVersion( )
     {
         return _nApiVersion;
     }
@@ -358,7 +357,7 @@ public class BPBot implements Serializable
      *
      * @return The AvatarRendererKey
      */
-    public String getAvatarRendererKey(  )
+    public String getAvatarRendererKey( )
     {
         return _strAvatarRendererKey;
     }
