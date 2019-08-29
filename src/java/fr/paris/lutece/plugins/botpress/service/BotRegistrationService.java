@@ -59,6 +59,11 @@ public class BotRegistrationService
 
     private static ReferenceList _listStatus;
 
+    /** private constructor */
+    private BotRegistrationService()
+    {
+    }
+    
     /**
      * Register all bots
      */
@@ -116,6 +121,11 @@ public class BotRegistrationService
         BotService.unregister( strBotKey );
     }
 
+    /**
+     * Return the list of mode
+     * @param locale The locale to translate mode
+     * @return The list
+     */
     public static ReferenceList getModes( Locale locale )
     {
         ReferenceList list = new ReferenceList( );

@@ -125,7 +125,7 @@ public class BPBotJspBean extends MVCAdminJspBean
 
     /**
      * Return a model that contains the list and paginator infos
-     * 
+     * @param <T> Object class
      * @param request
      *            The HTTP request
      * @param strBookmark

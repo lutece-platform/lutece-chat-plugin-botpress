@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.botpress.service.renderers;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static javax.swing.text.html.HTML.Tag.INPUT;
 
 /**
  * LinkConverter
