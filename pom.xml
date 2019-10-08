@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-botpress</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <name>Lutece botpress plugin</name>
 
@@ -79,7 +79,7 @@
         <connection>scm:git:https://github.com/lutece-platform/lutece-chat-plugin-botpress.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-chat-plugin-botpress.git</developerConnection>
         <url>https://github.com/lutece-platform/lutece-chat-plugin-botpress.git</url>
-      <tag>HEAD</tag>
+      <tag>plugin-botpress-1.0.1</tag>
   </scm>
     
 </project>
