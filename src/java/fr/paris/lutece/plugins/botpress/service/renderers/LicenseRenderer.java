@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2019, Mairie de Paris
+ * Copyright (c) 2002-2020, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,31 +31,34 @@
  *
  * License 1.0
  */
+
 package fr.paris.lutece.plugins.botpress.service.renderers;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import fr.paris.lutece.plugins.chatbot.business.Post;
+import java.util.Map;
 
 /**
- * LinkConverter Test
+ * LicenseRenderer
  */
-public class LinkConverterTest
+public class LicenseRenderer extends AbstractRenderer implements BotMessageRenderer
 {
+    private static final String FIELD_LICENSE = "payload";
 
-    private static final String INPUT = "hklgfqlj [link1](url1) jlkjlmjjl[link2](url2) fsqg";
-    private static final String EXPECTED = "hklgfqlj <a href=\"url1\" target=\"_blank\" >link1</a> jlkjlmjjl<a href=\"url2\" target=\"_blank\" >link2</a> fsqg";
-
-    /**
-     * Test of convert method, of class LinkConverter.
-     */
-    @Test
-    public void testConvert( )
-    {
-        System.out.println( "convertLink" );
-        LinkConverter instance = new LinkConverter( );
-        String result = instance.convert( INPUT );
-        assertEquals( EXPECTED, result );
-        System.out.println( result );
+    @Override
+    public boolean isInvoked(JsonNode nodeResponse) {
+        return nodeResponse.get( FIELD_LICENSE ) != null;
     }
 
+    @Override
+    public String render(Map map) {
+        return (String) map.get( "text" );
+    }
+
+    @Override
+    public String getPostContentType() {
+        return Post.CONTENT_TYPE_TEXT;
+    }
+
+    
 }

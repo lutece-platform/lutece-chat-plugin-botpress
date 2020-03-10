@@ -31,11 +31,11 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.botpress.service;
 
 import fr.paris.lutece.plugins.chatbot.business.BotPost;
 import fr.paris.lutece.test.LuteceTestCase;
+import fr.paris.lutece.test.Utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,18 +45,15 @@ import org.junit.Test;
 /**
  * ConverseServiceTest
  */
-public class ConverseServiceTest extends LuteceTestCase
-{
+public class ConverseServiceTest extends LuteceTestCase {
 
-    private static final String JSON_RESPONSE = "{\n" + "  \"responses\": [\n" + "    {\n" + "      \"type\": \"typing\",\n" + "      \"value\": true\n"
-            + "    },\n" + "    {\n" + "      \"type\": \"text\",\n" + "      \"markdown\": true,\n" + "      \"text\": \"May I know your name please?\"\n"
-            + "    }\n" + "  ],\n" + "  \"nlu\": {\n" + "    \"language\": \"en\",\n" + "    \"entities\": [],\n" + "    \"intent\": {\n"
-            + "      \"name\": \"hello\",\n" + "      \"confidence\": 1\n" + "    },\n" + "    \"intents\": [\n" + "      {\n"
-            + "        \"name\": \"hello\",\n" + "        \"confidence\": 1\n" + "      }\n" + "    ]\n" + "  },\n" + "  \"state\": {}\n" + "}";
+    private static final String JSON_RESPONSE_FILE = "response.json";
+    private static final String JSON_LICENCE_RESPONSE_FILE = "license_response.json";
 
     /**
      * Test of getBotResponse method, of class ConverseService.
      */
+    /*
     @Test
     public void testGetBotResponse( )
     {
@@ -69,20 +66,31 @@ public class ConverseServiceTest extends LuteceTestCase
         List<BotPost> listPosts = ConverseService.getBotResponse( strMessage, strConversationId, strBotApiEntryPoint, strErrorMessage, locale );
         for ( BotPost post : listPosts )
         {
-            System.err.println( post.getContent( ) );
+            System.out.println( post.getContent( ) );
         }
+    }
+     */
+    @Test
+    public void testParseJsonResponse() throws IOException {
+        System.out.println("parseJsonResponse");
+        List<BotPost> listPosts = new ArrayList<>();
+        String strJsonResponse = Utils.getFileContent(JSON_RESPONSE_FILE);
+        ConverseService.parseJsonResponse(strJsonResponse, listPosts);
+        listPosts.forEach((post) -> {
+            System.out.println( "Bot response : " + post.getContent());
+        });
+
     }
 
     @Test
-    public void testParseJsonResponse( ) throws IOException
-    {
-        System.out.println( "parseJsonResponse" );
-        List<BotPost> listPosts = new ArrayList<>( );
-        ConverseService.parseJsonResponse( JSON_RESPONSE, listPosts );
-        for ( BotPost post : listPosts )
-        {
-            System.err.println( post.getContent( ) );
-        }
+    public void testLicenceResponse() throws IOException {
+        System.out.println("licenceResponse");
+        List<BotPost> listPosts = new ArrayList<>();
+        String strJsonResponse = Utils.getFileContent(JSON_LICENCE_RESPONSE_FILE);
+        ConverseService.parseJsonResponse(strJsonResponse, listPosts);
+        listPosts.forEach((post) -> {
+            System.out.println( "Bot response : " + post.getContent());
+        });
 
     }
 

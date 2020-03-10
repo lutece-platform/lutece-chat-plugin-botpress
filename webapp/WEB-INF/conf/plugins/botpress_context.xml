@@ -26,5 +26,6 @@
     </bean>
     <bean id="botpress.rendererQuickReplies" class="fr.paris.lutece.plugins.botpress.service.renderers.QuickRepliesRenderer" />
     <bean id="botpress.rendererFile" class="fr.paris.lutece.plugins.botpress.service.renderers.FileRenderer" />
+    <bean id="botpress.rendererLicense" class="fr.paris.lutece.plugins.botpress.service.renderers.LicenseRenderer" />
     
 </beans>

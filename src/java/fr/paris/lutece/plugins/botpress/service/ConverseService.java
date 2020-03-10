@@ -36,6 +36,7 @@ package fr.paris.lutece.plugins.botpress.service;
 import fr.paris.lutece.plugins.botpress.service.renderers.BotMessageRenderer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.MissingNode;
 import fr.paris.lutece.plugins.botpress.business.RequestMessage;
 import fr.paris.lutece.plugins.chatbot.business.BotPost;
 import fr.paris.lutece.portal.service.util.AppLogService;
@@ -60,6 +61,7 @@ public final class ConverseService
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String NODE_RESPONSES = "responses";
+    private static final String NODE_PAYLOAD = "payload";
     private static final int VERSION_1 = 1;
 
     private static final String LOGGER_NAME = "botpress";
@@ -147,6 +149,8 @@ public final class ConverseService
     {
         JsonNode rootNode = _objectMapper.readTree( strJsonResponse );
         JsonNode responsesNode = rootNode.path( NODE_RESPONSES );
+        if(  ! (responsesNode instanceof MissingNode ) )
+        {
         Iterator<JsonNode> elements = responsesNode.elements( );
         while ( elements.hasNext( ) )
         {
@@ -155,6 +159,17 @@ public final class ConverseService
             if ( renderer != null )
             {
                 BotPost post = new BotPost( renderer.render( _objectMapper.convertValue( response, Map.class ) ), renderer.getPostContentType( ) );
+                listPosts.add( post );
+            }
+        }
+        }
+        else
+        {
+            JsonNode payloadNode = rootNode.path( NODE_PAYLOAD );
+            if(  ! ( payloadNode instanceof MissingNode ))
+            {
+                String strText = payloadNode.get( "text" ).asText();
+                BotPost post = new BotPost( strText , BotPost.CONTENT_TYPE_TEXT );
                 listPosts.add( post );
             }
         }

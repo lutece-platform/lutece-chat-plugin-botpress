@@ -1,0 +1,38 @@
+{
+    "type": "default",
+    "channel": "web",
+    "direction": "outgoing",
+    "payload": {
+        "text": "**Botpress Pro**\nAvailable: true\nEnabled: true\nLicensed: true",
+        "markdown": true,
+        "type": "text"
+    },
+    "target": "mpb-Qt-7RswqHrmd4QVpw",
+    "botId": "facil-familles-prod-20200303",
+    "createdOn": "2020-03-10T10:43:19.303Z",
+    "threadId": "153",
+    "id": "158383699930301250",
+    "preview": "**Botpress Pro**\nAvailable: true\nEnabled: true\nLicensed: true",
+    "flags": {},
+    "state": {
+        "__stacktrace": []
+    },
+    "nlu": {
+        "entities": [],
+        "language": "n/a",
+        "detectedLanguage": "n/a",
+        "ambiguous": false,
+        "slots": {},
+        "intent": {
+            "name": "none",
+            "confidence": 1,
+            "context": "global"
+        },
+        "intents": [],
+        "errored": false,
+        "includedContexts": [
+            "global"
+        ],
+        "ms": 0
+    }
+}
